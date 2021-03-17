@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=InternetVerbinder
+comment1.params=url
+comment1.target=java.lang.String\ httpGetAnfrage(java.lang.String)
+comment2.params=url\ args
+comment2.target=java.lang.String\ httpPostAnfrage(java.lang.String,\ java.lang.String)
+comment3.params=
+comment3.target=void\ testRequest1()
+comment4.params=
+comment4.target=void\ testRequest2()
+numComments=5
