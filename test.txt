@@ -1,2 +1,1 @@
-asdf
 hier könnt ihr versuche mit git und git-hub durchführen.
