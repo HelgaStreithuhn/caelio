@@ -47,7 +47,7 @@ public class Sensor
                         beobachter.get(i).aktualisieren(datensatz);
                     }
                 }
-            }, 100, 100000);
+            }, 0, 1000);
     }
 
     public void registrieren(Beobachter beobachter_)
