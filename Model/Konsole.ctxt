@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Konsole
-comment1.params=
-comment1.target=Konsole()
-comment2.params=datensatz
-comment2.target=void\ aktualisieren(Datensatz)
-numComments=3
