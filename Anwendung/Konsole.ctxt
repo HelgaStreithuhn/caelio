@@ -1,7 +1,6 @@
 #BlueJ class context
 comment0.target=Konsole
+comment0.text=\r\n\ Klasse\ zum\ Testen\ der\ Anwendung\ \u00FCber\ die\ Konsole\r\n
 comment1.params=
 comment1.target=Konsole()
-comment2.params=datensatz
-comment2.target=void\ aktualisieren(Datensatz)
-numComments=3
+numComments=2

@@ -1,22 +1,17 @@
-/**
- * Klasse zur Verwaltung eines Sensors
- * -----------------------------------
- * Datensatz  Datensatz
- */
-
-/*
- * Stand: 03.03.2021
- */
-
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+/*
+ * Klasse zur Verwaltung eines Datensatzes
+ */
 
 public class Sensor
 {
     // Datensatz aller Unterklassen
     public Datensatz datensatz;
     private ArrayList<Beobachter> beobachter;
+    private String kennung;
 
     public Sensor()
     {
@@ -58,7 +53,9 @@ public class Sensor
     public void messen() throws Exception
     {
         // Hinzufuegen eines Messwerts
-        System.out.println("Es sollte ein erbender Sensor verwendet werden.");
+        datensatz.einfuegen(new Messwert(1));
+        String url = "https://api.opensensemap.org/boxes/" + kennung
+            + "?format=json";
     }
 
     public Datensatz datensatzGeben()
