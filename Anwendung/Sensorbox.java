@@ -9,11 +9,16 @@ public class Sensorbox
     public Sensorbox(String kennung_)
     {
         // Eine Sensorbox hat eine einmalige Kennung
-        // ITG: 606dabb74393eb001ca6a781
-        String kennung = kennung_;
+        // ITG: "606dabb74393eb001ca6a781"
+        this.kennung = kennung_;
         
         // Eine Sensorbox hat mehrere Sensoren
-        Sensor sensor1 = new Sensor();
-        Sensor sensor2 = new Sensor();
+        //Sensor sensor1 = new Sensor();
+        //Sensor sensor2 = new Sensor();
+    }
+    
+    public void init() throws Exception{
+        String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
+        System.out.println(rohdaten);
     }
 }
