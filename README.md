@@ -6,4 +6,6 @@ Anwendung zur Überwachung von Luft-Messwerten
 ## Beschreibung
 Die Anwendung stellt eine grafische Oberfläche zur Überwachung von Luft-Messwerten bereit.
 ## Bedienung
-Die Anwendung ist als `JavaFX Application` über die Klasse `Anwendung` im BlueJ-Projekt unter `Anwendung/package.bluej` zu starten.
+Die Anwendung wird als `JavaFX Application` über die Klasse `Anwendung` im BlueJ-Projekt unter `Anwendung/package.bluej` zu starten sein.
+Zu Testzwecken werden die Daten allerdings bisher nur über die Konsole ausgegeben, dafür sollte die Methode Main der Klasse Main verwendet werden. 
+
