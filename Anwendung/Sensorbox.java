@@ -2,6 +2,8 @@
  * Klasse zur Verwaltung einer Sensorbox
  */
 
+import org.json.*;
+
 public class Sensorbox
 {
     private String kennung;
@@ -17,8 +19,9 @@ public class Sensorbox
         //Sensor sensor2 = new Sensor();
     }
     
-    public void init() throws Exception{
+    public void datenLaden() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
         System.out.println(rohdaten);
+        //JSON.parse(rohdaten);
     }
 }

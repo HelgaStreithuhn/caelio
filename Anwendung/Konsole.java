@@ -9,12 +9,9 @@ public class Konsole
         // Erstellen einer neuen Sensorbox
         Sensorbox sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
         try{
-            sensorbox.init();
+            sensorbox.datenLaden();
         } catch (Exception err){
             System.out.println(err);
         }
-        /**
-         * Es fehlen die JSON Daten für weiteres Vorgehen.
-         */
     }
 }

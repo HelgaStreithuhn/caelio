@@ -1,8 +1,7 @@
 #BlueJ class context
 comment0.target=Sensorbox
-comment0.text=\r\n\ Klasse\ zur\ Verwaltung\ einer\ Sensorbox\r\n
 comment1.params=kennung_
 comment1.target=Sensorbox(java.lang.String)
 comment2.params=
-comment2.target=void\ init()
+comment2.target=void\ datenLaden()
 numComments=3
