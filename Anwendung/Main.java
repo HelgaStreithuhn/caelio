@@ -1,11 +1,7 @@
-/*
- * Klasse zum Testen der Anwendung über die Konsole
- */
-
-public class Konsole
+public class Main
 {
-    public Konsole()
-    {
+    public static void main(String[] args){
+        System.out.println("Willkommen in der Testumgebung von Caelio.");
         // Erstellen einer neuen Sensorbox
         Sensorbox sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
         try{
@@ -14,5 +10,4 @@ public class Konsole
             System.out.println(err);
         }
     }
-    
 }
