@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="789.0" stylesheets="@style1.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+    <Tab text="Übersicht">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="744.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" text="Übersicht" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="290.0" layoutX="587.0" layoutY="88.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+                  <Circle fill="#ff0000e8" layoutX="647.0" layoutY="142.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#e6ff1f" layoutX="647.0" layoutY="233.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="#00e100" layoutX="647.0" layoutY="323.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="51.0" layoutX="638.0" layoutY="378.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="22.0" layoutX="620.0" layoutY="429.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <ImageView fitHeight="80.0" fitWidth="15.0" layoutX="40.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon%20temperatur.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Einstellungen">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutX="380.0" layoutY="148.0" prefHeight="458.0" prefWidth="386.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Einstellungen und Beschreibung" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
+                        <TextField />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung: Dies ist ein tolles Programm, aber noch in der Entwicklung!" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Temperatur">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="CO²">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Luftfeuchtigkeit">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Luftdruck">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="Beleuchtungsstärke">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="UV-Intensität">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+    <Tab text="Feinstaub">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutY="185.0" prefHeight="511.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Messwerte" />
+                        <HBox prefHeight="459.0" prefWidth="841.0">
+                           <children>
+                              <TableView minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="258.0" />
+                              <LineChart>
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </LineChart>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Code">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
