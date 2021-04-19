@@ -37,7 +37,13 @@ public class Controller
         sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
         try
         {
+            // Aktuelle Daten im Tab Code
             sensorbox.datenLaden();
+            String daten = "";
+            Datensatz datensatz = sensorbox.datensatzFinden("Temperatur");
+            for (int i = 0; i < datensatz.messwerteGeben().size(); i ++)
+                daten += "\n" + datensatz.messwerteGeben().get(i).zuString();
+            label_code.setText("Aktuelle Daten:" + daten);
         }
         catch (Exception e)
         {

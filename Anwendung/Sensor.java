@@ -46,7 +46,7 @@ public class Sensor
                         beobachter.get(i).aktualisieren(datensatz);
                     }
                 }
-            }, 0, 1000);
+            }, 0, 3600000);
     }
 
     public void registrieren(Beobachter beobachter_)
@@ -65,9 +65,14 @@ public class Sensor
 
     /* Methodenname ist recht selbstbeschreibend*/
     public void messwertHinzufuegen(String timestamp, double value){
-        System.out.println(name + ": " + value + " (" + timestamp + ")");
+        // System.out.println(name + ": " + value + " (" + timestamp + ")");
         datensatz.einfuegen(new Messwert(value));
         //TODO: Die Zeit des eingefügten Messwertes stimmt noch nicht.
+    }
+    
+    public String nameGeben()
+    {
+        return name;
     }
     
     public Datensatz datensatzGeben()
