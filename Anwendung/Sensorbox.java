@@ -3,12 +3,13 @@
  */
 
 import org.json.*;
+import java.util.ArrayList;
 
 public class Sensorbox
 {
     private String kennung;
     public String name;
-    public String asdf;
+    public ArrayList<Sensor> sensoren;
     public Sensorbox(String kennung_)
     {
         // Eine Sensorbox hat eine einmalige Kennung
@@ -16,8 +17,7 @@ public class Sensorbox
         this.kennung = kennung_;
         
         // Eine Sensorbox hat mehrere Sensoren
-        //Sensor sensor1 = new Sensor();
-        //Sensor sensor2 = new Sensor();
+        sensoren.add(new Sensor("niceheit"));
     }
     
     public void datenLaden() throws Exception{
