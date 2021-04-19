@@ -7,7 +7,8 @@ import org.json.*;
 public class Sensorbox
 {
     private String kennung;
-    
+    public String name;
+    public String asdf;
     public Sensorbox(String kennung_)
     {
         // Eine Sensorbox hat eine einmalige Kennung
@@ -21,7 +22,13 @@ public class Sensorbox
     
     public void datenLaden() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
-        System.out.println(rohdaten);
-        //JSON.parse(rohdaten);
+        System.out.println("Rohdaten: " + rohdaten);
+        JSONObject ergebnis = new JSONObject(rohdaten);
+        System.out.println("----------------------------");
+        name = ergebnis.getString("name");
+        JSONArray sensoren = ergebnis.getJSONArray("sensors");
+        for(Object sensor : sensoren){
+            System.out.println("Sensor: " + sensor.toString());
+        }
     }
 }
