@@ -1,19 +1,20 @@
 #BlueJ package file
-dependency1.from=Datensatz
-dependency1.to=Messwert
+dependency1.from=Sensorbox
+dependency1.to=InternetVerbinder
 dependency1.type=UsesDependency
-dependency2.from=Beobachter
-dependency2.to=Datensatz
+dependency2.from=Datensatz
+dependency2.to=Messwert
 dependency2.type=UsesDependency
-dependency3.from=Sensor
+dependency3.from=Beobachter
 dependency3.to=Datensatz
 dependency3.type=UsesDependency
 dependency4.from=Sensor
-dependency4.to=Beobachter
+dependency4.to=Datensatz
 dependency4.type=UsesDependency
 dependency5.from=Sensor
-dependency5.to=Messwert
+dependency5.to=Beobachter
 dependency5.type=UsesDependency
+<<<<<<< HEAD
 dependency6.from=Main
 dependency6.to=Sensorbox
 dependency6.type=UsesDependency
@@ -36,6 +37,27 @@ package.frame.height=680
 package.frame.width=923
 package.numDependencies=7
 package.numTargets=10
+=======
+dependency6.from=Sensor
+dependency6.to=Messwert
+dependency6.type=UsesDependency
+editor.fx.0.height=739
+editor.fx.0.width=816
+editor.fx.0.x=552
+editor.fx.0.y=100
+objectbench.height=66
+objectbench.width=927
+package.divider.horizontal=0.600635593220339
+package.divider.vertical=0.8741379310344828
+package.editor.height=500
+package.editor.width=829
+package.editor.x=52
+package.editor.y=72
+package.frame.height=680
+package.frame.width=980
+package.numDependencies=6
+package.numTargets=9
+>>>>>>> 9d54615c9c245884e20ef45226b2d3366e1e1faa
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
@@ -52,6 +74,7 @@ target1.type=ClassTarget
 target1.width=100
 target1.x=70
 target1.y=10
+<<<<<<< HEAD
 target10.height=50
 target10.name=Sensor
 target10.showInterface=false
@@ -59,6 +82,8 @@ target10.type=ClassTarget
 target10.width=80
 target10.x=540
 target10.y=190
+=======
+>>>>>>> 9d54615c9c245884e20ef45226b2d3366e1e1faa
 target2.height=50
 target2.name=Messwert
 target2.showInterface=false
@@ -71,8 +96,13 @@ target3.name=Sensorbox
 target3.showInterface=false
 target3.type=ClassTarget
 target3.width=90
+<<<<<<< HEAD
 target3.x=110
 target3.y=170
+=======
+target3.x=150
+target3.y=180
+>>>>>>> 9d54615c9c245884e20ef45226b2d3366e1e1faa
 target4.height=50
 target4.name=style1.css
 target4.type=CSSTarget
@@ -101,8 +131,9 @@ target7.width=90
 target7.x=180
 target7.y=10
 target8.height=50
-target8.name=Main
+target8.name=Beobachter
 target8.showInterface=false
+<<<<<<< HEAD
 target8.type=ClassTarget
 target8.width=80
 target8.x=40
@@ -114,3 +145,16 @@ target9.type=InterfaceTarget
 target9.width=100
 target9.x=430
 target9.y=130
+=======
+target8.type=InterfaceTarget
+target8.width=100
+target8.x=430
+target8.y=130
+target9.height=50
+target9.name=Sensor
+target9.showInterface=false
+target9.type=ClassTarget
+target9.width=80
+target9.x=540
+target9.y=190
+>>>>>>> 9d54615c9c245884e20ef45226b2d3366e1e1faa

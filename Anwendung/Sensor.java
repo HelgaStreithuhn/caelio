@@ -13,10 +13,10 @@ public class Sensor
     private ArrayList<Beobachter> beobachter;
     private String kennung;
 
-    public Sensor()
+    public Sensor(String einheit)
     {
         // Ein Sensor hat einen Datensatz
-        datensatz = new Datensatz("ug/m^3");
+        datensatz = new Datensatz(einheit);
 
         // Initiieren der Beobachter
         beobachter = new ArrayList<Beobachter>();
