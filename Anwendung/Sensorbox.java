@@ -17,6 +17,7 @@ public class Sensorbox
         this.kennung = kennung_;
         
         // Eine Sensorbox hat mehrere Sensoren
+        sensoren = new ArrayList<Sensor>();
         sensoren.add(new Sensor("niceheit"));
     }
     
@@ -26,9 +27,10 @@ public class Sensorbox
         JSONObject ergebnis = new JSONObject(rohdaten);
         System.out.println("----------------------------");
         name = ergebnis.getString("name");
-        JSONArray sensoren = ergebnis.getJSONArray("sensors");
-        for(Object sensor : sensoren){
-            System.out.println("Sensor: " + sensor.toString());
+        JSONArray sensorenJSON = ergebnis.getJSONArray("sensors");
+        for(Object sensor : sensorenJSON){
+            JSONObject sensorJSON = (JSONObject) sensor;
+            System.out.println(sensorJSON.toString());
         }
     }
 }
