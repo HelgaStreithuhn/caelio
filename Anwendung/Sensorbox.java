@@ -18,24 +18,26 @@ public class Sensorbox
         
         // Eine Sensorbox hat mehrere Sensoren
         sensoren = new ArrayList<Sensor>();
-        try{
-            datenLaden();
-        } catch (Exception err) {
-            System.out.println(err);
-        }
     }
     
     public void datenLaden() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
-        System.out.println("Rohdaten: " + rohdaten);
+        
         JSONObject ergebnis = new JSONObject(rohdaten);
-        System.out.println("----------------------------");
         name = ergebnis.getString("name");
+        
+        
+        sensoren.clear();
+        
         JSONArray sensorenJSON = ergebnis.getJSONArray("sensors");
         for(Object sensor : sensorenJSON){
             JSONObject sensorJSON = (JSONObject) sensor;
-            sensoren.add(new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title")));
-            System.out.println(sensorJSON.toString());
+            
+            Sensor neuerSensor = new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title"),sensorJSON.getString("_id"));
+            JSONObject messwert = sensorJSON.getJSONObject("lastMeasurement");
+            neuerSensor.messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
+            
+            sensoren.add(neuerSensor);
         }
     }
 }

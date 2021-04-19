@@ -13,10 +13,12 @@ public class Sensor
     private ArrayList<Beobachter> beobachter;
     private String kennung;
     public String name;
+    public String _id;
 
-    public Sensor(String einheit, String name)
+    public Sensor(String einheit, String name, String _id)
     {
         this.name = name;
+        this._id = _id;
         // Ein Sensor hat einen Datensatz
         datensatz = new Datensatz(einheit);
 
@@ -44,7 +46,7 @@ public class Sensor
                         beobachter.get(i).aktualisieren(datensatz);
                     }
                 }
-            }, 0, 1000);
+            }, 0, 10000);
     }
 
     public void registrieren(Beobachter beobachter_)
@@ -52,14 +54,22 @@ public class Sensor
         beobachter.add(beobachter_);
     }
 
+    
+    
     public void messen() throws Exception
     {
-        // Hinzufuegen eines Messwerts
+        /*// Hinzufuegen eines Messwerts
         datensatz.einfuegen(new Messwert(1));
         String url = "https://api.opensensemap.org/boxes/" + kennung
-            + "?format=json";
+            + "?format=json";*/
+            throw new Exception("Achtung: toter Code");
     }
 
+    /* Methodenname ist recht selbstbeschreibend*/
+    public void messwertHinzufuegen(String timestamp, double value){
+        System.out.println(name + ": " + value + " (" + timestamp + ")");
+    }
+    
     public Datensatz datensatzGeben()
     {
         return datensatz;
