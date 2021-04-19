@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="789.0" stylesheets="@style1.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="789.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
   <tabs>
     <Tab text="Übersicht">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="744.0">
                <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="428.0" layoutX="26.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" width="479.0" />
                   <Label layoutX="14.0" layoutY="6.0" text="Übersicht" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="290.0" layoutX="587.0" layoutY="88.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                   <Circle fx:id="kreisrot" fill="#ff0000e8" layoutX="647.0" layoutY="142.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
@@ -31,36 +32,58 @@
                   <Circle fx:id="kreisgrün" fill="#00e100" layoutX="647.0" layoutY="323.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="51.0" layoutX="638.0" layoutY="378.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="22.0" layoutX="620.0" layoutY="429.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
-                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="44.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="49.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20temperatur.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="135.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="38.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20beleuchtungsstärke.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="191.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="42.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20feinstaub.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="238.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="276.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20luftdruck.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="80.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="41.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20luftfeuchtigkeit.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="45.0" layoutX="275.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="50.0" layoutX="267.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20uv-intensität.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="50.0" layoutX="262.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Downloads/icon_CO2.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="25.0" layoutY="36.0" text="aktueller Standort:" />
+                  <TextField fx:id="uebersichtStandort" layoutX="146.0" layoutY="32.0" />
+                  <Label layoutX="84.0" layoutY="93.0" text="Temperatur" />
+                  <Label layoutX="82.0" layoutY="194.0" text="Luftfeuchtigkeit" />
+                  <Label layoutX="85.0" layoutY="303.0" text="Beleuchtungsstärke" />
+                  <Label layoutX="85.0" layoutY="410.0" text="Feinstaub" />
+                  <Label layoutX="325.0" layoutY="93.0" text="CO2" />
+                  <Label layoutX="325.0" layoutY="194.0" text="Luftdruck" />
+                  <Label layoutX="325.0" layoutY="303.0" text="UV-Intensität" />
+                  <TextField fx:id="uebersichtTemperatur" layoutX="85.0" layoutY="119.0" />
+                  <TextField fx:id="uebersichtLuftfeuchtigkeit" layoutX="85.0" layoutY="221.0" />
+                  <TextField fx:id="uebersichtBeleuchtung" layoutX="85.0" layoutY="333.0" />
+                  <TextField fx:id="uebersichtFeinstaub" layoutX="85.0" layoutY="439.0" />
+                  <TextField fx:id="uebersichtCo2" layoutX="325.0" layoutY="119.0" />
+                  <TextField fx:id="uebersichtLuftdruck" layoutX="325.0" layoutY="221.0" />
+                  <TextField fx:id="uebersichtUV" layoutX="325.0" layoutY="333.0" />
+                  <Label layoutX="26.0" layoutY="57.0" text="aktuelle Werte:" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -72,7 +95,7 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Einstellungen und Beschreibung" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
-                        <TextField />
+                        <ChoiceBox fx:id="datenbank" prefHeight="25.0" prefWidth="781.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung: Dies ist ein tolles Programm, aber noch in der Entwicklung!" />
                      </children>
                   </VBox>
@@ -84,52 +107,164 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="44.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="157.0" fitWidth="68.0" layoutX="25.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20temperatur.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="25.0" layoutY="14.0" text="Temperatur" />
+                  <Label layoutX="105.0" layoutY="65.0" text="aktueller Wert:" />
+                  <Label layoutX="105.0" layoutY="98.0" text="max. Wert:" />
+                  <Label layoutX="105.0" layoutY="133.0" text="min. Wert:" />
+                  <TextField fx:id="tempAktuell" layoutX="210.0" layoutY="61.0" />
+                  <TextField fx:id="tempMin" layoutX="210.0" layoutY="129.0" />
+                  <TextField fx:id="tempMax" layoutX="210.0" layoutY="94.0" />
+                  <TableView layoutX="44.0" layoutY="263.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="255.0" layoutY="180.0" prefHeight="327.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="CO²">
+      <Tab text="CO2">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="87.0" fitWidth="191.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Downloads/icon_CO2.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="226.0" layoutY="53.0" text="aktueller Wert:" />
+                  <Label layoutX="28.0" layoutY="14.0" text="CO2" />
+                  <Label layoutX="225.0" layoutY="88.0" text="max. Wert:" />
+                  <TextField fx:id="co2Aktuell" layoutX="325.0" layoutY="49.0" />
+                  <TextField fx:id="co2Max" layoutX="325.0" layoutY="84.0" />
+                  <TextField fx:id="co2Min" layoutX="325.0" layoutY="119.0" />
+                  <Label layoutX="226.0" layoutY="123.0" text="min. Wert:" />
+                  <TableView layoutX="28.0" layoutY="224.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="254.0" layoutY="164.0" prefHeight="341.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children></AnchorPane>
         </content>
       </Tab>
       <Tab text="Luftfeuchtigkeit">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="86.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="128.0" fitWidth="135.0" layoutX="26.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20luftfeuchtigkeit.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="150.0" layoutY="73.0" text="aktueller Wert:" />
+                  <Label layoutX="26.0" layoutY="20.0" text="Luftfeuchtigkeit" />
+                  <Label layoutX="150.0" layoutY="111.0" text="max. Wert:" />
+                  <Label layoutX="151.0" layoutY="148.0" prefHeight="0.0" prefWidth="55.0" text="min. Wert:" />
+                  <TextField fx:id="feuchtMin" layoutX="254.0" layoutY="144.0" />
+                  <TextField fx:id="feuchtMax" layoutX="254.0" layoutY="107.0" />
+                  <TextField fx:id="feuchtAktuell" layoutX="254.0" layoutY="69.0" />
+                  <TableView layoutX="26.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="254.0" layoutY="192.0" prefHeight="315.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="Luftdruck">
+      <Tab fx:id="druckAktuell" text="Luftdruck">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="49.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20luftdruck.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="136.0" layoutY="73.0" text="aktueller Wert:" />
+                  <Label layoutX="37.0" layoutY="20.0" text="Luftdruck" />
+                  <Label layoutX="135.0" layoutY="110.0" text="max. Wert:" />
+                  <Label layoutX="136.0" layoutY="144.0" text="min. Wert:" />
+                  <TextField layoutX="252.0" layoutY="69.0" />
+                  <TextField fx:id="druckMax" layoutX="252.0" layoutY="106.0" />
+                  <TextField fx:id="druckMin" layoutX="252.0" layoutY="140.0" />
+                  <TableView layoutX="37.0" layoutY="247.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="258.0" layoutY="185.0" prefHeight="325.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="Beleuchtungsstärke">
+      <Tab fx:id="beleuchtungAktuell" text="Beleuchtungsstärke">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20beleuchtungsstärke.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="38.0" layoutY="21.0" text="Beleuchtungsstärke" />
+                  <Label layoutX="200.0" layoutY="57.0" text="aktueller Wert:" />
+                  <Label layoutX="200.0" layoutY="98.0" text="max. Wert:" />
+                  <Label layoutX="201.0" layoutY="140.0" text="min. Wert:" />
+                  <TextField layoutX="312.0" layoutY="53.0" prefHeight="0.0" prefWidth="149.0" />
+                  <TextField fx:id="beleuchtungMax" layoutX="312.0" layoutY="94.0" />
+                  <TextField fx:id="beleuchtungMin" layoutX="312.0" layoutY="136.0" />
+                  <TableView layoutX="38.0" layoutY="248.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="257.0" layoutY="174.0" prefHeight="333.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
         </content>
       </Tab>
@@ -137,11 +272,32 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="92.0" fitWidth="197.0" layoutX="43.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon%20uv-intensität.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="43.0" layoutY="25.0" text="UV- Intensität" />
+                  <Label layoutX="218.0" layoutY="64.0" text="aktueller Wert:" />
+                  <Label layoutX="219.0" layoutY="139.0" text="min. Wert:" />
+                  <Label layoutX="218.0" layoutY="102.0" text="max. Wert:" />
+                  <TextField fx:id="uvMax" layoutX="320.0" layoutY="98.0" />
+                  <TextField fx:id="uvMin" layoutX="320.0" layoutY="135.0" />
+                  <TextField fx:id="uvAktuell" layoutX="320.0" layoutY="60.0" />
+                  <TableView layoutX="43.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="257.0" layoutY="175.0" prefHeight="335.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
         </content>
       </Tab>
@@ -149,32 +305,32 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <VBox layoutY="185.0" prefHeight="511.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Messwerte" />
-                        <HBox prefHeight="152.0" prefWidth="656.0">
-                           <children>
-                              <TableView minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="258.0" />
-                              <LineChart>
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
-                                 <HBox.margin>
-                                    <Insets left="5.0" />
-                                 </HBox.margin>
-                              </LineChart>
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icon%20feinstaub.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
+                  <Label layoutX="164.0" layoutY="86.0" text="max. Wert:" />
+                  <Label layoutX="35.0" layoutY="22.0" text="Feinstaub" />
+                  <Label layoutX="165.0" layoutY="125.0" text="min. Wert:" />
+                  <Label layoutX="164.0" layoutY="50.0" text="aktueller Wert:" />
+                  <TextField fx:id="staubAktuell" layoutX="271.0" layoutY="46.0" />
+                  <TextField fx:id="staubMin" layoutX="271.0" layoutY="121.0" />
+                  <TextField fx:id="staubMax" layoutX="271.0" layoutY="82.0" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon%20feinstaub.png" />
+                     </image>
+                  </ImageView>
+                  <TableView layoutX="35.0" layoutY="255.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+                  <LineChart layoutX="259.0" layoutY="171.0" prefHeight="340.0" prefWidth="500.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -182,9 +338,8 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="label_code" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="765.0" text="Wer das sieht, merkt, dass das Programm nicht funktioniert." />
-               </children>
-            </AnchorPane>
+                  <Label fx:id="label_code" layoutX="189.0" layoutY="94.0" prefHeight="337.0" prefWidth="411.0" />
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>
