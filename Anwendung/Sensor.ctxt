@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Sensor
 comment0.text=\r\n\ Klasse\ zur\ Verwaltung\ eines\ Datensatzes\r\n
-comment1.params=einheit
-comment1.target=Sensor(java.lang.String)
+comment1.params=einheit\ name
+comment1.target=Sensor(java.lang.String,\ java.lang.String)
 comment2.params=
 comment2.target=void\ run()
 comment3.params=beobachter_

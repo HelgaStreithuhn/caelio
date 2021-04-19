@@ -12,9 +12,11 @@ public class Sensor
     public Datensatz datensatz;
     private ArrayList<Beobachter> beobachter;
     private String kennung;
+    public String name;
 
-    public Sensor(String einheit)
+    public Sensor(String einheit, String name)
     {
+        this.name = name;
         // Ein Sensor hat einen Datensatz
         datensatz = new Datensatz(einheit);
 

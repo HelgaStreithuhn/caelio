@@ -18,7 +18,11 @@ public class Sensorbox
         
         // Eine Sensorbox hat mehrere Sensoren
         sensoren = new ArrayList<Sensor>();
-        sensoren.add(new Sensor("niceheit"));
+        try{
+            datenLaden();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
     }
     
     public void datenLaden() throws Exception{
@@ -30,6 +34,7 @@ public class Sensorbox
         JSONArray sensorenJSON = ergebnis.getJSONArray("sensors");
         for(Object sensor : sensorenJSON){
             JSONObject sensorJSON = (JSONObject) sensor;
+            sensoren.add(new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title")));
             System.out.println(sensorJSON.toString());
         }
     }
