@@ -53,8 +53,6 @@ public class Sensor
     {
         beobachter.add(beobachter_);
     }
-
-    
     
     public void messen() throws Exception
     {
@@ -62,7 +60,7 @@ public class Sensor
         datensatz.einfuegen(new Messwert(1));
         String url = "https://api.opensensemap.org/boxes/" + kennung
             + "?format=json";*/
-            throw new Exception();
+            // throw new Exception();
     }
 
     /* Methodenname ist recht selbstbeschreibend*/

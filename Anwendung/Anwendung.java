@@ -23,7 +23,7 @@ public class Anwendung extends Application
     {
         // Laden der fxml-Datei
         FXMLLoader fxml = new FXMLLoader(getClass().getResource(
-                    "view1.fxml"));
+                    "view.fxml"));
         Parent uebergeordnet = fxml.load();
 
         // Darstellen der Obeflaeche

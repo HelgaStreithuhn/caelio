@@ -1,6 +1,7 @@
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 
 /*
@@ -9,6 +10,9 @@ import javafx.scene.shape.Circle;
 
 public class Controller
 {
+    // Attribute
+    private Sensorbox sensorbox;
+
     @FXML
     private ResourceBundle resources;
 
@@ -16,19 +20,40 @@ public class Controller
     private URL location;
 
     @FXML
-    private Circle ampelRot;
+    private Circle kreisrot;
 
     @FXML
-    private Circle ampelGelb;
+    private Circle kreisgelb;
 
     @FXML
-    private Circle ampelGruen;
+    private Circle kreisgrün;
+
+    @FXML
+    private Label label_code;
+
+    public void sensorboxLaden()
+    {
+        // Sensorbox ITG
+        sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
+        try
+        {
+            sensorbox.datenLaden();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
 
     @FXML
     void initialize()
     {
-        assert ampelRot != null : "fx:id=\"ampelRot\" was not injected: check your FXML file 'view1.fxml'.";
-        assert ampelGelb != null : "fx:id=\"ampelGelb\" was not injected: check your FXML file 'view1.fxml'.";
-        assert ampelGruen != null : "fx:id=\"ampelGruen\" was not injected: check your FXML file 'view1.fxml'.";
+        assert kreisrot != null : "fx:id=\"kreisrot\" was not injected: check your FXML file 'view.fxml'.";
+        assert kreisgelb != null : "fx:id=\"kreisgelb\" was not injected: check your FXML file 'view.fxml'.";
+        assert kreisgrün != null : "fx:id=\"kreisgrün\" was not injected: check your FXML file 'view.fxml'.";
+        assert label_code != null : "fx:id=\"label_code\" was not injected: check your FXML file 'view.fxml'.";
+
+        // Laden der Sensorbox
+        sensorboxLaden();
     }
 }

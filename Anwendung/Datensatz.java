@@ -1,10 +1,3 @@
-/**
- * Klasse zur Speicherung von Sensordaten
- * ----------------------------------------------------------------------
- * Messwerte mit Zeitstempel  ---                     ArrayList<Messwert>
- * Einheit                    Einheit des Gemessenen  String
- */
-
 /*
  * Stand: 01.03.2021
  */
