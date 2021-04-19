@@ -46,7 +46,7 @@ public class Sensor
                         beobachter.get(i).aktualisieren(datensatz);
                     }
                 }
-            }, 0, 10000);
+            }, 0, 1000);
     }
 
     public void registrieren(Beobachter beobachter_)
@@ -62,12 +62,14 @@ public class Sensor
         datensatz.einfuegen(new Messwert(1));
         String url = "https://api.opensensemap.org/boxes/" + kennung
             + "?format=json";*/
-            throw new Exception("Achtung: toter Code");
+            throw new Exception();
     }
 
     /* Methodenname ist recht selbstbeschreibend*/
     public void messwertHinzufuegen(String timestamp, double value){
         System.out.println(name + ": " + value + " (" + timestamp + ")");
+        datensatz.einfuegen(new Messwert(value));
+        //TODO: Die Zeit des eingefügten Messwertes stimmt noch nicht.
     }
     
     public Datensatz datensatzGeben()
