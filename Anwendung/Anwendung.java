@@ -30,7 +30,7 @@ public class Anwendung extends Application
         Scene oberflaeche = new Scene(uebergeordnet);
         stufe.setScene(oberflaeche);
         stufe.setTitle("Caelio");
-        stufe.getIcons().add(new Image("icon.png"));
+        stufe.getIcons().add(new Image("Icons/caelio.png"));
         stufe.show();
     }
 }

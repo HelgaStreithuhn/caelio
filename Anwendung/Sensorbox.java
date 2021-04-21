@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Sensorbox
 {
     private String kennung;
-    public String name;
+    private String name;
     public ArrayList<Sensor> sensoren;
 
     public Sensorbox(String kennung_)
