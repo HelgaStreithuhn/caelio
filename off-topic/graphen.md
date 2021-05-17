@@ -8,6 +8,10 @@ Wichtige Begriffe:
 - Gewichte
 - Pfad
 - gerichtet/ungerichtet
+- Zyklen
+- einfache Pfade
+- Erreichbarkeit
+- unzusammenhängender Graph
 
 Kanten vollständiger Graphen:
 
