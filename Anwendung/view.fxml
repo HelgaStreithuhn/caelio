@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="789.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="789.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
   <tabs>
     <Tab text="Übersicht">
       <content>
@@ -76,13 +76,13 @@
                   <Label layoutX="325.0" layoutY="93.0" text="CO2" />
                   <Label layoutX="325.0" layoutY="194.0" text="Luftdruck" />
                   <Label layoutX="325.0" layoutY="303.0" text="UV-Intensität" />
-                  <TextField fx:id="uebersichtTemperatur" layoutX="85.0" layoutY="119.0" />
-                  <TextField fx:id="uebersichtLuftfeuchtigkeit" layoutX="85.0" layoutY="221.0" />
-                  <TextField fx:id="uebersichtBeleuchtung" layoutX="85.0" layoutY="333.0" />
-                  <TextField fx:id="uebersichtFeinstaub" layoutX="85.0" layoutY="439.0" />
-                  <TextField fx:id="uebersichtCo2" layoutX="325.0" layoutY="119.0" />
-                  <TextField fx:id="uebersichtLuftdruck" layoutX="325.0" layoutY="221.0" />
-                  <TextField fx:id="uebersichtUV" layoutX="325.0" layoutY="333.0" />
+                  <TextField fx:id="uebersichtTemperatur" editable="false" layoutX="85.0" layoutY="119.0" />
+                  <TextField fx:id="uebersichtLuftfeuchtigkeit" editable="false" layoutX="85.0" layoutY="221.0" />
+                  <TextField fx:id="uebersichtBeleuchtung" editable="false" layoutX="85.0" layoutY="333.0" />
+                  <TextField fx:id="uebersichtFeinstaub" editable="false" layoutX="85.0" layoutY="439.0" />
+                  <TextField fx:id="uebersichtCo2" editable="false" layoutX="325.0" layoutY="119.0" />
+                  <TextField fx:id="uebersichtLuftdruck" editable="false" layoutX="325.0" layoutY="221.0" />
+                  <TextField fx:id="uebersichtUV" editable="false" layoutX="325.0" layoutY="333.0" />
                   <Label layoutX="26.0" layoutY="57.0" text="aktuelle Werte:" />
                </children></AnchorPane>
       </content>
@@ -116,9 +116,9 @@
                   <Label layoutX="105.0" layoutY="65.0" text="aktueller Wert:" />
                   <Label layoutX="105.0" layoutY="98.0" text="max. Wert:" />
                   <Label layoutX="105.0" layoutY="133.0" text="min. Wert:" />
-                  <TextField fx:id="tempAktuell" layoutX="210.0" layoutY="61.0" />
-                  <TextField fx:id="tempMin" layoutX="210.0" layoutY="129.0" />
-                  <TextField fx:id="tempMax" layoutX="210.0" layoutY="94.0" />
+                  <TextField fx:id="tempAktuell" editable="false" layoutX="210.0" layoutY="61.0" />
+                  <TextField fx:id="tempMin" editable="false" layoutX="210.0" layoutY="129.0" />
+                  <TextField fx:id="tempMax" editable="false" layoutX="210.0" layoutY="94.0" />
                   <TableView layoutX="44.0" layoutY="263.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
@@ -148,9 +148,9 @@
                   <Label layoutX="226.0" layoutY="53.0" text="aktueller Wert:" />
                   <Label layoutX="28.0" layoutY="14.0" text="CO2" />
                   <Label layoutX="225.0" layoutY="88.0" text="max. Wert:" />
-                  <TextField fx:id="co2Aktuell" layoutX="325.0" layoutY="49.0" />
-                  <TextField fx:id="co2Max" layoutX="325.0" layoutY="84.0" />
-                  <TextField fx:id="co2Min" layoutX="325.0" layoutY="119.0" />
+                  <TextField fx:id="co2Aktuell" editable="false" layoutX="325.0" layoutY="49.0" />
+                  <TextField fx:id="co2Max" editable="false" layoutX="325.0" layoutY="84.0" />
+                  <TextField fx:id="co2Min" editable="false" layoutX="325.0" layoutY="119.0" />
                   <Label layoutX="226.0" layoutY="123.0" text="min. Wert:" />
                   <TableView layoutX="28.0" layoutY="224.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
@@ -182,9 +182,9 @@
                   <Label layoutX="26.0" layoutY="20.0" text="Luftfeuchtigkeit" />
                   <Label layoutX="150.0" layoutY="111.0" text="max. Wert:" />
                   <Label layoutX="151.0" layoutY="148.0" prefHeight="0.0" prefWidth="55.0" text="min. Wert:" />
-                  <TextField fx:id="feuchtMin" layoutX="254.0" layoutY="144.0" />
-                  <TextField fx:id="feuchtMax" layoutX="254.0" layoutY="107.0" />
-                  <TextField fx:id="feuchtAktuell" layoutX="254.0" layoutY="69.0" />
+                  <TextField fx:id="feuchtMin" editable="false" layoutX="254.0" layoutY="144.0" />
+                  <TextField fx:id="feuchtMax" editable="false" layoutX="254.0" layoutY="107.0" />
+                  <TextField fx:id="feuchtAktuell" editable="false" layoutX="254.0" layoutY="69.0" />
                   <TableView layoutX="26.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
@@ -215,9 +215,9 @@
                   <Label layoutX="37.0" layoutY="20.0" text="Luftdruck" />
                   <Label layoutX="135.0" layoutY="110.0" text="max. Wert:" />
                   <Label layoutX="136.0" layoutY="144.0" text="min. Wert:" />
-                  <TextField layoutX="252.0" layoutY="69.0" />
-                  <TextField fx:id="druckMax" layoutX="252.0" layoutY="106.0" />
-                  <TextField fx:id="druckMin" layoutX="252.0" layoutY="140.0" />
+                  <TextField editable="false" layoutX="252.0" layoutY="69.0" />
+                  <TextField fx:id="druckMax" editable="false" layoutX="252.0" layoutY="106.0" />
+                  <TextField fx:id="druckMin" editable="false" layoutX="252.0" layoutY="140.0" />
                   <TableView layoutX="37.0" layoutY="247.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
@@ -248,9 +248,9 @@
                   <Label layoutX="200.0" layoutY="57.0" text="aktueller Wert:" />
                   <Label layoutX="200.0" layoutY="98.0" text="max. Wert:" />
                   <Label layoutX="201.0" layoutY="140.0" text="min. Wert:" />
-                  <TextField layoutX="312.0" layoutY="53.0" prefHeight="0.0" prefWidth="149.0" />
-                  <TextField fx:id="beleuchtungMax" layoutX="312.0" layoutY="94.0" />
-                  <TextField fx:id="beleuchtungMin" layoutX="312.0" layoutY="136.0" />
+                  <TextField editable="false" layoutX="312.0" layoutY="53.0" prefHeight="0.0" prefWidth="149.0" />
+                  <TextField fx:id="beleuchtungMax" editable="false" layoutX="312.0" layoutY="94.0" />
+                  <TextField fx:id="beleuchtungMin" editable="false" layoutX="312.0" layoutY="136.0" />
                   <TableView layoutX="38.0" layoutY="248.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
@@ -281,9 +281,9 @@
                   <Label layoutX="218.0" layoutY="64.0" text="aktueller Wert:" />
                   <Label layoutX="219.0" layoutY="139.0" text="min. Wert:" />
                   <Label layoutX="218.0" layoutY="102.0" text="max. Wert:" />
-                  <TextField fx:id="uvMax" layoutX="320.0" layoutY="98.0" />
-                  <TextField fx:id="uvMin" layoutX="320.0" layoutY="135.0" />
-                  <TextField fx:id="uvAktuell" layoutX="320.0" layoutY="60.0" />
+                  <TextField fx:id="uvMax" editable="false" layoutX="320.0" layoutY="98.0" />
+                  <TextField fx:id="uvMin" editable="false" layoutX="320.0" layoutY="135.0" />
+                  <TextField fx:id="uvAktuell" editable="false" layoutX="320.0" layoutY="60.0" />
                   <TableView layoutX="43.0" layoutY="218.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
@@ -309,9 +309,9 @@
                   <Label layoutX="35.0" layoutY="22.0" text="Feinstaub" />
                   <Label layoutX="165.0" layoutY="125.0" text="min. Wert:" />
                   <Label layoutX="164.0" layoutY="50.0" text="aktueller Wert:" />
-                  <TextField fx:id="staubAktuell" layoutX="271.0" layoutY="46.0" />
-                  <TextField fx:id="staubMin" layoutX="271.0" layoutY="121.0" />
-                  <TextField fx:id="staubMax" layoutX="271.0" layoutY="82.0" />
+                  <TextField fx:id="staubAktuell" editable="false" layoutX="271.0" layoutY="46.0" />
+                  <TextField fx:id="staubMin" editable="false" layoutX="271.0" layoutY="121.0" />
+                  <TextField fx:id="staubMax" editable="false" layoutX="271.0" layoutY="82.0" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icons/feinstaub.png" />
