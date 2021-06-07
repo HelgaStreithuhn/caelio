@@ -41,4 +41,9 @@ public class Messwert
     {
         return wert + " bei " + zeitstempel;
     }
+    
+    public String wertAlsTextGeben(){
+        return String.valueOf(wert);
+    }
+    
 }

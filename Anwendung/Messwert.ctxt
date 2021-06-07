@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=long\ zeitstempelGeben()
 comment5.params=
 comment5.target=java.lang.String\ ausgeben()
-numComments=6
+comment6.params=
+comment6.target=java.lang.String\ wertAlsTextGeben()
+numComments=7

@@ -12,4 +12,6 @@ comment5.params=
 comment5.target=java.util.ArrayList\ messwerteGeben()
 comment6.params=
 comment6.target=java.lang.String\ einheitGeben()
-numComments=7
+comment7.params=
+comment7.target=Messwert\ neustenMesswerteGeben()
+numComments=8

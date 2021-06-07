@@ -42,4 +42,8 @@ public class Datensatz
     {
         return einheit;
     }
+    public Messwert neustenMesswerteGeben()
+    {
+        return messwerte.get(0);
+    }
 }
