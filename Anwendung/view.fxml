@@ -68,7 +68,7 @@
                      </image>
                   </ImageView>
                   <Label layoutX="25.0" layoutY="36.0" text="aktueller Standort:" />
-                  <TextField fx:id="uebersichtStandort" layoutX="146.0" layoutY="32.0" />
+                  <TextField fx:id="uebersichtStandort" editable="false" layoutX="146.0" layoutY="32.0" />
                   <Label layoutX="84.0" layoutY="93.0" text="Temperatur" />
                   <Label layoutX="82.0" layoutY="194.0" text="Luftfeuchtigkeit" />
                   <Label layoutX="85.0" layoutY="303.0" text="Beleuchtungsstärke" />
