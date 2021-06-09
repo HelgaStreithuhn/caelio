@@ -21,6 +21,17 @@ public class Sensorbox
         sensoren = new ArrayList<Sensor>();
     }
 
+    public String nameGeben(){
+        return name;
+    }
+    
+    public String neuesteDatenGeben(String name){
+        try{
+            return String.valueOf(datensatzFinden(name).neustenMesswerteGeben().wertGeben()) + String.valueOf(datensatzFinden(name).einheitGeben());
+        } catch (Exception e){System.out.println(e);}
+        return "N/A";
+    }
+    
     public void datenLaden() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
 
@@ -40,17 +51,14 @@ public class Sensorbox
         }
     }
 
-    public Datensatz datensatzFinden(String name)
-    {
-        Datensatz datensatz = null;
+    public Datensatz datensatzFinden(String name) throws Exception{
         for (Sensor sensor : sensoren)
         {
             if (sensor.nameGeben().equals(name)) // String-Vergleich mit .equals()
             {
-                datensatz = sensor.datensatzGeben();
-                break;
+                return sensor.datensatzGeben();
             }
         }
-        return datensatz;
+        throw new Exception("Der angeforderte Datensatz konnte nicht gefunden werden: " + name);
     }
 }

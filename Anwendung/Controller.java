@@ -137,6 +137,7 @@ public class Controller
             for (int i = 0; i < datensatz.messwerteGeben().size(); i ++)
                 daten += "\n" + datensatz.messwerteGeben().get(i).zuString();
             label_code.setText("Aktuelle Daten:" + daten);
+            oberflaecheAktualisieren();
         }
         catch (Exception e)
         {
@@ -144,6 +145,18 @@ public class Controller
         }
     }
 
+    public void oberflaecheAktualisieren(){
+        uebersichtStandort.setText(sensorbox.nameGeben());
+        uebersichtTemperatur.setText(sensorbox.neuesteDatenGeben("Temperatur"));
+        uebersichtLuftfeuchtigkeit.setText(sensorbox.neuesteDatenGeben("rel. Luftfeuchte"));
+        uebersichtBeleuchtung.setText(sensorbox.neuesteDatenGeben("Beleuchtungsstärke"));
+        uebersichtFeinstaub.setText(sensorbox.neuesteDatenGeben("Feinstaub"));
+        uebersichtCo2.setText(sensorbox.neuesteDatenGeben("CO₂"));
+        uebersichtLuftdruck.setText(sensorbox.neuesteDatenGeben("Luftdruck"));
+        uebersichtUV.setText(sensorbox.neuesteDatenGeben("UV-Intensität"));
+    } 
+    
+    
     @FXML
     void initialize()
     {
