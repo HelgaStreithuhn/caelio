@@ -84,6 +84,8 @@
                   <TextField fx:id="uebersichtLuftdruck" editable="false" layoutX="325.0" layoutY="221.0" />
                   <TextField fx:id="uebersichtUV" editable="false" layoutX="325.0" layoutY="333.0" />
                   <Label layoutX="26.0" layoutY="57.0" text="aktuelle Werte:" />
+                  <Label layoutX="311.0" layoutY="36.0" text="Messzeit:" />
+                  <TextField fx:id="uebersichtMesszeit" editable="false" layoutX="368.0" layoutY="32.0" />
                </children></AnchorPane>
       </content>
     </Tab>
