@@ -30,7 +30,10 @@ public class Controller
 
     @FXML
     private Circle kreisgrün;
-
+    
+    @FXML
+    private TextField uebersichtMesszeit;
+    
     @FXML
     private TextField uebersichtStandort;
 
@@ -147,7 +150,13 @@ public class Controller
 
     public void oberflaecheAktualisieren(){
         uebersichtStandort.setText(sensorbox.nameGeben());
-        uebersichtTemperatur.setText(sensorbox.neuesteDatenGeben("Temperatur"));
+        
+        uebersichtMesszeit.setText(sensorbox.letzteMessung());
+        
+        String tempAkt  = sensorbox.neuesteDatenGeben("Temperatur");
+        uebersichtTemperatur.setText(tempAkt);
+        this.tempAktuell.setText(tempAkt);
+        
         uebersichtLuftfeuchtigkeit.setText(sensorbox.neuesteDatenGeben("rel. Luftfeuchte"));
         uebersichtBeleuchtung.setText(sensorbox.neuesteDatenGeben("Beleuchtungsstärke"));
         uebersichtFeinstaub.setText(sensorbox.neuesteDatenGeben("Feinstaub"));

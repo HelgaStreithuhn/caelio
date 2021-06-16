@@ -4,12 +4,16 @@
 
 import org.json.*;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public class Sensorbox
 {
     private String kennung;
     private String name;
     public ArrayList<Sensor> sensoren;
+    private String letzteMessung;
 
     public Sensorbox(String kennung_)
     {
@@ -24,19 +28,27 @@ public class Sensorbox
     public String nameGeben(){
         return name;
     }
-    
+
     public String neuesteDatenGeben(String name){
         try{
             return String.valueOf(datensatzFinden(name).neustenMesswerteGeben().wertGeben()) + String.valueOf(datensatzFinden(name).einheitGeben());
         } catch (Exception e){System.out.println(e);}
         return "N/A";
     }
-    
+
     public void datenLaden() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
 
         JSONObject ergebnis = new JSONObject(rohdaten);
         name = ergebnis.getString("name");
+
+        TimeZone utc = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        sourceFormat.setTimeZone(utc);
+        SimpleDateFormat destFormat = new SimpleDateFormat("HH:mm:ss");
+        
+
+        letzteMessung = destFormat.format(sourceFormat.parse(ergebnis.getString("updatedAt")));
 
         sensoren.clear();
         JSONArray sensorenJSON = ergebnis.getJSONArray("sensors");
@@ -60,5 +72,9 @@ public class Sensorbox
             }
         }
         throw new Exception("Der angeforderte Datensatz konnte nicht gefunden werden: " + name);
+    }
+
+    public String letzteMessung(){
+        return letzteMessung;
     }
 }
