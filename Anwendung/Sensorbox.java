@@ -55,7 +55,7 @@ public class Sensorbox
         for(Object sensor : sensorenJSON){
             JSONObject sensorJSON = (JSONObject) sensor;
 
-            Sensor neuerSensor = new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title"),sensorJSON.getString("_id"));
+            Sensor neuerSensor = new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title"),sensorJSON.getString("_id"), this);
             JSONObject messwert = sensorJSON.getJSONObject("lastMeasurement");
             neuerSensor.messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
 
@@ -63,6 +63,21 @@ public class Sensorbox
         }
     }
 
+    public String getKennung(){return kennung;}
+    
+    
+    public void datenNachladen() throws Exception{
+        String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
+        JSONObject ergebnis = new JSONObject(rohdaten);
+        
+        //Setzt die letzte Messzeit fest
+        TimeZone utc = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        sourceFormat.setTimeZone(utc);
+        SimpleDateFormat destFormat = new SimpleDateFormat("HH:mm:ss");
+        letzteMessung = destFormat.format(sourceFormat.parse(ergebnis.getString("updatedAt")));
+    }
+    
     public Datensatz datensatzFinden(String name) throws Exception{
         for (Sensor sensor : sensoren)
         {

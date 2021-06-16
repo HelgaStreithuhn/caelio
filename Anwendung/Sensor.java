@@ -2,6 +2,12 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.json.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 /*
  * Klasse zur Verwaltung eines Datensatzes
  */
@@ -11,14 +17,15 @@ public class Sensor
     // Datensatz aller Unterklassen
     public Datensatz datensatz;
     private ArrayList<Beobachter> beobachter;
-    private String kennung;
     public String name;
-    public String _id;
+    public String id;
+    private Sensorbox parent;
 
-    public Sensor(String einheit, String name, String _id)
+    public Sensor(String einheit, String name, String _id, Sensorbox parent)
     {
+        this.parent = parent;
         this.name = name;
-        this._id = _id;
+        this.id = _id;
         // Ein Sensor hat einen Datensatz
         datensatz = new Datensatz(einheit);
 
@@ -46,7 +53,7 @@ public class Sensor
                         beobachter.get(i).aktualisieren(datensatz);
                     }
                 }
-            }, 0, 3600000);
+            }, 0, 60000);
     }
 
     public void registrieren(Beobachter beobachter_)
@@ -56,11 +63,11 @@ public class Sensor
     
     public void messen() throws Exception
     {
-        /*// Hinzufuegen eines Messwerts
-        datensatz.einfuegen(new Messwert(1));
-        String url = "https://api.opensensemap.org/boxes/" + kennung
-            + "?format=json";*/
-            // throw new Exception();
+        
+        String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + parent.getKennung() + "/sensors/" + id + "?format=json");
+        System.out.println(rohdaten);
+        JSONObject messwert = new JSONObject(rohdaten).getJSONObject("lastMeasurement");
+        messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
     }
 
     /* Methodenname ist recht selbstbeschreibend*/
