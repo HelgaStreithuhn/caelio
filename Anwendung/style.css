@@ -1,11 +1,16 @@
 *{
-    -fx-font-family: "Noto Sans", "Helvetica", serif;
+    -fx-font-family: "Noto Sans", "Helvetica", sans-serif;
     -fx-font-size: 1em;
 }
+
+/* Tab pane styling */
+TabPane{
+    -fx-tab-min-width: 50px;
+}
+
 AnchorPane{
     -fx-background-color: linear-gradient(to left top, #ded, #70defa);
 }
-
 .header{
     -fx-font-size: 2em;
     -fx-text-align: center;
