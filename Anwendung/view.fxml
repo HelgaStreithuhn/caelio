@@ -89,23 +89,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Einstellungen">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <VBox layoutX="380.0" layoutY="148.0" prefHeight="458.0" prefWidth="386.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Einstellungen und Beschreibung" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
-                        <ChoiceBox fx:id="datenbank" prefHeight="25.0" prefWidth="781.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung: Dies ist ein tolles Programm, aber noch in der Entwicklung!" />
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-        </content>
-      </Tab>
-      <Tab text="Temperatur">
+      <Tab fx:id="tempTab" text="Temperatur">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -138,7 +122,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="CO2">
+      <Tab fx:id="co2Tab" text="CO2">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -171,7 +155,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="Luftfeuchtigkeit">
+      <Tab fx:id="feuchtTab" text="Luftfeuchtigkeit">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -204,7 +188,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab fx:id="druckAktuell" text="Luftdruck">
+      <Tab fx:id="druckTab" text="Luftdruck">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -217,7 +201,7 @@
                   <Label layoutX="37.0" layoutY="20.0" text="Luftdruck" />
                   <Label layoutX="135.0" layoutY="110.0" text="max. Wert:" />
                   <Label layoutX="136.0" layoutY="144.0" text="min. Wert:" />
-                  <TextField editable="false" layoutX="252.0" layoutY="69.0" />
+                  <TextField fx:id="druckAktuell" editable="false" layoutX="252.0" layoutY="69.0" />
                   <TextField fx:id="druckMax" editable="false" layoutX="252.0" layoutY="106.0" />
                   <TextField fx:id="druckMin" editable="false" layoutX="252.0" layoutY="140.0" />
                   <TableView layoutX="37.0" layoutY="247.0" prefHeight="200.0" prefWidth="200.0">
@@ -237,7 +221,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab fx:id="beleuchtungAktuell" text="Beleuchtungsstärke">
+      <Tab fx:id="beleuchtungTab" text="Beleuchtungsstärke">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -250,7 +234,7 @@
                   <Label layoutX="200.0" layoutY="57.0" text="aktueller Wert:" />
                   <Label layoutX="200.0" layoutY="98.0" text="max. Wert:" />
                   <Label layoutX="201.0" layoutY="140.0" text="min. Wert:" />
-                  <TextField editable="false" layoutX="312.0" layoutY="53.0" prefHeight="0.0" prefWidth="149.0" />
+                  <TextField fx:id="beleuchtungAktuell" editable="false" layoutX="312.0" layoutY="53.0" prefHeight="0.0" prefWidth="149.0" />
                   <TextField fx:id="beleuchtungMax" editable="false" layoutX="312.0" layoutY="94.0" />
                   <TextField fx:id="beleuchtungMin" editable="false" layoutX="312.0" layoutY="136.0" />
                   <TableView layoutX="38.0" layoutY="248.0" prefHeight="200.0" prefWidth="200.0">
@@ -270,7 +254,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="UV-Intensität">
+      <Tab fx:id="uvTab" text="UV-Intensität">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -303,7 +287,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-    <Tab text="Feinstaub">
+    <Tab fx:id="staubTab" text="Feinstaub">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -336,12 +320,20 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Code">
+      <Tab text="Einstellungen">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="label_code" layoutX="189.0" layoutY="94.0" prefHeight="337.0" prefWidth="411.0" />
-               </children></AnchorPane>
+                  <VBox layoutX="380.0" layoutY="148.0" prefHeight="458.0" prefWidth="386.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Einstellungen und Beschreibung" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
+                        <ChoiceBox fx:id="datenbank" prefHeight="25.0" prefWidth="781.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung: Dies ist ein tolles Programm, aber noch in der Entwicklung!" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
         </content>
       </Tab>
   </tabs>
