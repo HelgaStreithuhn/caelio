@@ -16,7 +16,6 @@ public class Sensor
 {
     // Datensatz aller Unterklassen
     public Datensatz datensatz;
-    private ArrayList<Beobachter> beobachter;
     public String name;
     public String id;
     private Sensorbox parent;
@@ -30,7 +29,6 @@ public class Sensor
         datensatz = new Datensatz(einheit);
 
         // Initiieren der Beobachter
-        beobachter = new ArrayList<Beobachter>();
 
         // Messen
         Timer timer = new Timer();
@@ -46,34 +44,35 @@ public class Sensor
                     {
                         System.out.println("Fehler beim Messen.");
                     }
-
-                    // Senden an alle Beobachter
-                    for (int i = 0; i < beobachter.size(); i ++)
-                    {
-                        beobachter.get(i).aktualisieren(datensatz);
-                    }
                 }
-            }, 0, 60000);
+            }, 0, 20000);
     }
 
-    public void registrieren(Beobachter beobachter_)
-    {
-        beobachter.add(beobachter_);
-    }
     
-    public void messen() throws Exception
-    {
-        
+    
+    public void messen() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + parent.getKennung() + "/sensors/" + id + "?format=json");
-        System.out.println(rohdaten);
+        //System.out.println(rohdaten);
         JSONObject messwert = new JSONObject(rohdaten).getJSONObject("lastMeasurement");
         messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
     }
-
-    /* Methodenname ist recht selbstbeschreibend*/
+    
     public void messwertHinzufuegen(String timestamp, double value){
-        // System.out.println(name + ": " + value + " (" + timestamp + ")");
         datensatz.einfuegen(new Messwert(value));
+        
+        TimeZone utc = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat destFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        
+        sourceFormat.setTimeZone(utc);
+        
+        try{
+            parent.sensorHatGemessen(destFormat.format(sourceFormat.parse(timestamp)));
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
+        
         //TODO: Die Zeit des eingefügten Messwertes stimmt noch nicht.
     }
     

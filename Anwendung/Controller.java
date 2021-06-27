@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
  * Klasse zum Verwalten der Anwendung
  */
 
-public class Controller
+public class Controller implements Beobachter
 {
     // Attribute
     private Sensorbox sensorbox;
@@ -150,6 +150,7 @@ public class Controller
         // Sensorbox ITG
         //sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
         sensorbox = new Sensorbox("607db857542eeb001cba21f0");
+        sensorbox.interesseAnmelden(this);
         try
         {
             // Aktuelle Daten im Tab Code
@@ -166,6 +167,10 @@ public class Controller
         }
     }
 
+    public void aktualisieren(){
+        oberflaecheAktualisieren();
+    }
+    
     public void oberflaecheAktualisieren(){
         uebersichtStandort.setText(sensorbox.nameGeben());
         

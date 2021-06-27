@@ -1,4 +1,4 @@
 interface Beobachter
 {
-    public void aktualisieren(Datensatz datensatz);
+    public void aktualisieren();
 }

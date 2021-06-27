@@ -2,6 +2,8 @@
 comment0.target=Sensorbox
 comment1.params=kennung_
 comment1.target=Sensorbox(java.lang.String)
+comment10.params=beobachter_
+comment10.target=void\ interesseAnmelden(Beobachter)
 comment2.params=
 comment2.target=java.lang.String\ nameGeben()
 comment3.params=name
@@ -16,4 +18,6 @@ comment7.params=name
 comment7.target=Datensatz\ datensatzFinden(java.lang.String)
 comment8.params=
 comment8.target=java.lang.String\ letzteMessung()
-numComments=9
+comment9.params=zeit
+comment9.target=void\ sensorHatGemessen(java.lang.String)
+numComments=11

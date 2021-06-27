@@ -14,6 +14,7 @@ public class Sensorbox
     private String name;
     public ArrayList<Sensor> sensoren;
     private String letzteMessung;
+    private ArrayList<Beobachter> beobachter;
 
     public Sensorbox(String kennung_)
     {
@@ -23,6 +24,8 @@ public class Sensorbox
 
         // Eine Sensorbox hat mehrere Sensoren
         sensoren = new ArrayList<Sensor>();
+        
+        beobachter = new ArrayList<Beobachter>();
     }
 
     public String nameGeben(){
@@ -91,5 +94,17 @@ public class Sensorbox
 
     public String letzteMessung(){
         return letzteMessung;
+    }
+    
+    public void sensorHatGemessen(String zeit){
+        letzteMessung = zeit;
+        // Senden an alle Beobachter
+        for(int i = 0; i < beobachter.size(); i ++){
+            beobachter.get(i).aktualisieren();
+        }
+    }
+    
+    public void interesseAnmelden(Beobachter beobachter_){
+        beobachter.add(beobachter_);
     }
 }
