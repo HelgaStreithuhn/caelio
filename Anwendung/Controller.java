@@ -163,7 +163,7 @@ public class Controller implements Beobachter
         }
         catch (Exception e)
         {
-            System.out.println(e);
+            System.out.println(e + "(Fehler beim initialisieren der Sensorbox)");
         }
     }
 

@@ -22,8 +22,7 @@ public class Anwendung extends Application
     public void start(Stage stufe) throws Exception
     {
         // Laden der fxml-Datei
-        FXMLLoader fxml = new FXMLLoader(getClass().getResource(
-                    "view.fxml"));
+        FXMLLoader fxml = new FXMLLoader(getClass().getResource("view.fxml"));
         Parent uebergeordnet = fxml.load();
 
         // Darstellen der Obeflaeche

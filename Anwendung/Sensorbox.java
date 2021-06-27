@@ -35,7 +35,7 @@ public class Sensorbox
     public String neuesteDatenGeben(String name){
         try{
             return String.valueOf(datensatzFinden(name).neustenMesswerteGeben().wertGeben()) + String.valueOf(datensatzFinden(name).einheitGeben());
-        } catch (Exception e){System.out.println(e);}
+        } catch (Exception e){System.out.println(e + " (Klasse Sensorbox)");}
         return "N/A";
     }
 
@@ -97,11 +97,12 @@ public class Sensorbox
     }
     
     public void sensorHatGemessen(String zeit){
-        letzteMessung = zeit;
-        // Senden an alle Beobachter
-        for(int i = 0; i < beobachter.size(); i ++){
-            beobachter.get(i).aktualisieren();
-        }
+            letzteMessung = zeit;
+            // Senden an alle Beobachter
+            for(int i = 0; i < beobachter.size(); i ++){
+                beobachter.get(i).aktualisieren();
+            }
+        
     }
     
     public void interesseAnmelden(Beobachter beobachter_){

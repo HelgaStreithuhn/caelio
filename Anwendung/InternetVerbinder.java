@@ -21,13 +21,13 @@ public abstract class InternetVerbinder {
         anfrage.setRequestMethod("POST");
         anfrage.setDoOutput(true);
         
-        byte[] out = args.getBytes(StandardCharsets.UTF_8);
-        int length = out.length;
+        byte[] aus = args.getBytes(StandardCharsets.UTF_8);
+        int length = aus.length;
         anfrage.setFixedLengthStreamingMode(length);
         anfrage.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         anfrage.connect();
         try(OutputStream ausgangsStrom = anfrage.getOutputStream()) {
-            ausgangsStrom.write(out);
+            ausgangsStrom.write(aus);
         } catch(Exception e){
             System.out.println(e);
         }
@@ -40,10 +40,10 @@ public abstract class InternetVerbinder {
         eingang.close();
         return text;
         }
-    public static void testRequest1() throws Exception{
+    public static void versuchsAnfrage1() throws Exception{
         System.out.println(httpGetAnfrage("http://example.org/"));
     }
-    public static void testRequest2() throws Exception{
+    public static void versuchsAnfrage2() throws Exception{
         System.out.println(httpPostAnfrage("https://httpbin.org/anything","foo=bar&te=st"));
     }
 }

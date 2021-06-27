@@ -69,7 +69,7 @@ public class Sensor
         try{
             parent.sensorHatGemessen(destFormat.format(sourceFormat.parse(timestamp)));
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println(e + " (Klasse Sensor)");
         }
 
         
