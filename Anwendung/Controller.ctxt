@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Controller
-comment0.text=\r\n\ Klasse\ zum\ Verwalten\ der\ Anwendung\r\n
+comment0.text=\n\ Klasse\ zum\ Verwalten\ der\ Anwendung\n
 comment1.params=
 comment1.target=void\ sensorboxLaden()
 comment2.params=

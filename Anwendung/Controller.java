@@ -22,7 +22,7 @@ public class Controller
     @FXML
     private URL location;
 
-        @FXML
+    @FXML
     private Circle kreisrot;
 
     @FXML
@@ -148,7 +148,8 @@ public class Controller
     public void sensorboxLaden()
     {
         // Sensorbox ITG
-        sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
+        //sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
+        sensorbox = new Sensorbox("607db857542eeb001cba21f0");
         try
         {
             // Aktuelle Daten im Tab Code
@@ -182,9 +183,11 @@ public class Controller
         uebersichtBeleuchtung.setText(leucht);
         this.beleuchtungAktuell.setText(leucht);
         
-        String staub = sensorbox.neuesteDatenGeben("Feinstaub");
-        uebersichtFeinstaub.setText(staub);
-        this.staubAktuell.setText(staub);
+        String staub10 = sensorbox.neuesteDatenGeben("PM10");
+        String staub2 = sensorbox.neuesteDatenGeben("PM2.5");
+        String staubGanz = staub10 + "(PM10), " + staub2 + "(PM2,5)";
+        uebersichtFeinstaub.setText(staubGanz);
+        this.staubAktuell.setText(staubGanz);
         
         String kohlendiox = sensorbox.neuesteDatenGeben("CO₂");
         uebersichtCo2.setText(kohlendiox);
