@@ -153,12 +153,13 @@ public class Controller implements Beobachter
         sensorbox.interesseAnmelden(this);
         try
         {
-            // Aktuelle Daten im Tab Code
+            // Sensorbox wird initialisiert
             sensorbox.datenLaden();
-            String daten = "";
+            /*String daten = "";
             Datensatz datensatz = sensorbox.datensatzFinden("Temperatur");
             for (int i = 0; i < datensatz.messwerteGeben().size(); i ++)
-                daten += "\n" + datensatz.messwerteGeben().get(i).zuString();
+                daten += "\n" + datensatz.messwerteGeben().get(i).zuString();*/
+            // Oberfläche wird mit Daten der Sensorbox gefüllt
             oberflaecheAktualisieren();
         }
         catch (Exception e)
@@ -168,14 +169,17 @@ public class Controller implements Beobachter
     }
 
     public void aktualisieren(){
+        // wenn Sensoren neu gemessen haben, muss die Oberfläche die neuen Daten der Sensoren anzeigen
         oberflaecheAktualisieren();
     }
     
     public void oberflaecheAktualisieren(){
+        //Standort und Uhrzeit der letzten Messung werden im Tab Übersicht angezeigt
         uebersichtStandort.setText(sensorbox.nameGeben());
-        
         uebersichtMesszeit.setText(sensorbox.letzteMessung());
         
+        
+        //in alle Felder aktuelle Daten einfüllen
         String tempAkt  = sensorbox.neuesteDatenGeben("Temperatur");
         uebersichtTemperatur.setText(tempAkt);
         this.tempAktuell.setText(tempAkt);
@@ -188,6 +192,7 @@ public class Controller implements Beobachter
         uebersichtBeleuchtung.setText(leucht);
         this.beleuchtungAktuell.setText(leucht);
         
+        //Feinstaub wird in zwei verschiedenen Größen gemessen -> beide sollen angezeigt werden
         String staub10 = sensorbox.neuesteDatenGeben("PM10");
         String staub2 = sensorbox.neuesteDatenGeben("PM2.5");
         String staubGanz = staub10 + "(PM10), " + staub2 + "(PM2,5)";
