@@ -6,6 +6,7 @@ Anwendung zur Überwachung von Luft-Messwerten.
 
 * [Beschreibung](#beschreibung)
 * [Bedienung](#bedienung)
+* [Implementierung](#implementierung)
 
 ## Beschreibung
 
@@ -19,4 +20,4 @@ Die Anwendung ist als JavaFX Application über die Klasse `Anwendung` im BlueJ-P
 
 Klassendiagramm:
 
-![](Dokumentation/klassendiagramm.png)
+![Klassendiagramm](Dokumentation/klassendiagramm.png)
