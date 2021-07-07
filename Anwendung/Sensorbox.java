@@ -10,10 +10,8 @@ import java.util.TimeZone;
 
 public class Sensorbox
 {
-    private String kennung;
-    private String name;
+    private String kennung, letzteMessung, name;
     public ArrayList<Sensor> sensoren;
-    private String letzteMessung;
     private ArrayList<Beobachter> beobachter;
 
     public Sensorbox(String kennung_)
@@ -25,21 +23,30 @@ public class Sensorbox
         // Eine Sensorbox hat mehrere Sensoren
         sensoren = new ArrayList<Sensor>();
         
+        // Beobachter werden über Aenderungen informiert
         beobachter = new ArrayList<Beobachter>();
     }
 
-    public String nameGeben(){
+    public String nameGeben()
+    {
         return name;
     }
 
-    public String neuesteDatenGeben(String name){
-        try{
+    public String neuesteDatenGeben(String name)
+    {
+        try
+        {
             return String.valueOf(datensatzFinden(name).neustenMesswerteGeben().wertGeben()) + String.valueOf(datensatzFinden(name).einheitGeben());
-        } catch (Exception e){System.out.println(e + " (Klasse Sensorbox)");}
+        }
+        catch (Exception e)
+        {
+            System.out.println(e + " (Klasse Sensorbox)");
+        }
         return "N/A";
     }
 
-    public void datenLaden() throws Exception{
+    public void datenLaden() throws Exception
+    {
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
 
         JSONObject ergebnis = new JSONObject(rohdaten);
@@ -55,7 +62,8 @@ public class Sensorbox
 
         sensoren.clear();
         JSONArray sensorenJSON = ergebnis.getJSONArray("sensors");
-        for(Object sensor : sensorenJSON){
+        for (Object sensor : sensorenJSON)
+        {
             JSONObject sensorJSON = (JSONObject) sensor;
 
             Sensor neuerSensor = new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title"),sensorJSON.getString("_id"), this);
@@ -66,10 +74,13 @@ public class Sensorbox
         }
     }
 
-    public String getKennung(){return kennung;}
+    public String getKennung()
+    {
+        return kennung;
+    }
     
-    
-    public void datenNachladen() throws Exception{
+    public void datenNachladen() throws Exception
+    {
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
         JSONObject ergebnis = new JSONObject(rohdaten);
         
@@ -81,31 +92,36 @@ public class Sensorbox
         letzteMessung = destFormat.format(sourceFormat.parse(ergebnis.getString("updatedAt")));
     }
     
-    public Datensatz datensatzFinden(String name) throws Exception{
+    public Datensatz datensatzFinden(String name) throws Exception
+    {
         for (Sensor sensor : sensoren)
         {
-            if (sensor.nameGeben().equals(name)) // String-Vergleich mit .equals()
+            if (sensor.nameGeben().equals(name))
             {
                 return sensor.datensatzGeben();
             }
         }
         throw new Exception("Der angeforderte Datensatz konnte nicht gefunden werden: " + name);
     }
-
-    public String letzteMessung(){
-        return letzteMessung;
-    }
     
-    public void sensorHatGemessen(String zeit){
+    public void sensorHatGemessen(String zeit)
+    {
             letzteMessung = zeit;
-            // Senden an alle Beobachter
-            for(int i = 0; i < beobachter.size(); i ++){
+            
+            // Benachrichtigung der Beobachtern
+            for (int i = 0; i < beobachter.size(); i ++)
+            {
                 beobachter.get(i).aktualisieren();
             }
-        
     }
     
-    public void interesseAnmelden(Beobachter beobachter_){
+    public void interesseAnmelden(Beobachter beobachter_)
+    {
         beobachter.add(beobachter_);
+    }
+
+    public String letzteMessung()
+    {
+        return letzteMessung;
     }
 }
