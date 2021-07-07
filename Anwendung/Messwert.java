@@ -5,9 +5,6 @@
  * Zeitstempel  int
  */
 
-/*
- * Stand: 01.03.2021
- */
 
 import java.time.Instant;
 
@@ -22,7 +19,7 @@ public class Messwert
         zeitstempel = Instant.now().toEpochMilli();
     }
     
-    public String zuString()
+    public String toString()
     {
         return wert + " bei " + zeitstempel;
     }

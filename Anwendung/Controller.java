@@ -155,12 +155,9 @@ public class Controller implements Beobachter
         {
             // Sensorbox wird initialisiert
             sensorbox.datenLaden();
-            /*String daten = "";
-            Datensatz datensatz = sensorbox.datensatzFinden("Temperatur");
-            for (int i = 0; i < datensatz.messwerteGeben().size(); i ++)
-                daten += "\n" + datensatz.messwerteGeben().get(i).zuString();*/
+            
             // Oberfläche wird mit Daten der Sensorbox gefüllt
-            oberflaecheAktualisieren();
+            aktualisieren();
         }
         catch (Exception e)
         {
@@ -168,15 +165,15 @@ public class Controller implements Beobachter
         }
     }
 
-    public void aktualisieren(){
-        // wenn Sensoren neu gemessen haben, muss die Oberfläche die neuen Daten der Sensoren anzeigen
-        oberflaecheAktualisieren();
-    }
     
-    public void oberflaecheAktualisieren(){
+    public void aktualisieren(){
+        // wenn neue/andere Daten in der Sensorbox vorliegen, sollen diese auch in der Oberfläche erscheinen.
+        //Diese Methode aktualisiert die Oberfläche in diesem Fall.
+        
+        
         //Standort und Uhrzeit der letzten Messung werden im Tab Übersicht angezeigt
         uebersichtStandort.setText(sensorbox.nameGeben());
-        uebersichtMesszeit.setText(sensorbox.letzteMessung());
+        uebersichtMesszeit.setText(sensorbox.letzteMessungGeben());
         
         
         //in alle Felder aktuelle Daten einfüllen

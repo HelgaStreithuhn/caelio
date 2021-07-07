@@ -66,32 +66,28 @@ public class Sensor
         
         sourceFormat.setTimeZone(utc);
         
+        String localTime = "unknown";
         try{
-            parent.sensorHatGemessen(destFormat.format(sourceFormat.parse(timestamp)));
-        }catch(Exception e){
-            System.out.println(e + " (Klasse Sensor)");
+            localTime = destFormat.format(sourceFormat.parse(timestamp));
+        } catch (Exception e) {
+            System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, beim Versuch den String " + timestamp + " als Datum zu verwenden)");
+        } finally {
+            parent.sensorHatGemessen(localTime);
         }
-
-        
-        //TODO: Die Zeit des eingefügten Messwertes stimmt noch nicht.
     }
     
-    public String nameGeben()
-    {
+    public String nameGeben(){
         return name;
     }
     
-    public Datensatz datensatzGeben()
-    {
+    public Datensatz datensatzGeben(){
         return datensatz;
     }
 
-    public void ausgeben()
-    {
+    public void ausgeben(){
         System.out.println("Sensordaten:");
         ArrayList<Messwert> messwerte = datensatz.messwerteGeben();
-        for (int i = 0; i < messwerte.size(); i ++)
-        {
+        for (int i = 0; i < messwerte.size(); i ++){
             System.out.println(messwerte.get(i).ausgeben());
         }
     }
