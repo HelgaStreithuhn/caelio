@@ -31,7 +31,7 @@ public class Sensor
         // Initiieren der Beobachter
 
         // Messen
-        Timer timer = new Timer();
+       /* Timer timer = new Timer();
         timer.schedule(new TimerTask()
             {
                 public void run()
@@ -45,7 +45,7 @@ public class Sensor
                         System.out.println("Fehler beim Messen.");
                     }
                 }
-            }, 0, 20000);
+            }, 0, 20000);*/
     }
 
     
@@ -58,7 +58,6 @@ public class Sensor
     }
     
     public void messwertHinzufuegen(String timestamp, double value){
-        datensatz.einfuegen(new Messwert(value));
         
         TimeZone utc = TimeZone.getTimeZone("UTC");
         SimpleDateFormat destFormat = new SimpleDateFormat("HH:mm:ss");
@@ -69,7 +68,10 @@ public class Sensor
         String localTime = "unknown";
         try{
             localTime = destFormat.format(sourceFormat.parse(timestamp));
+            long unixzeit = sourceFormat.parse(timestamp).getTime();
+            datensatz.einfuegen(new Messwert(value, unixzeit));
         } catch (Exception e) {
+            datensatz.einfuegen(new Messwert(value));
             System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, beim Versuch den String " + timestamp + " als Datum zu verwenden)");
         } finally {
             parent.sensorHatGemessen(localTime);

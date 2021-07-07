@@ -208,6 +208,25 @@ public class Controller implements Beobachter
         uebersichtUV.setText(intense);
         this.uvAktuell.setText(intense);
         
+        // TODO: in arbeit: in alle Felder max und min werte eintragen
+        
+        tempMax.setText(sensorbox.extremDatenGeben("Temperatur", true));
+        tempMin.setText(sensorbox.extremDatenGeben("Temperatur", false));
+        
+        feuchtMax.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", true));
+        feuchtMin.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", false));
+        
+        beleuchtungMax.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", true));
+        beleuchtungMin.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", false));
+        
+        // TODO : ??? staubMax.setText(sensorbox.extremDatenGeben("Temperatur", true)); udn für co2
+        
+        druckMax.setText(sensorbox.extremDatenGeben("Luftdruck", true));
+        druckMin.setText(sensorbox.extremDatenGeben("Luftdruck", false));
+        
+        uvMax.setText(sensorbox.extremDatenGeben("UV-Intensität", true));
+        uvMin.setText(sensorbox.extremDatenGeben("UV-Intensität", false));
+        
     } 
     
     

@@ -19,6 +19,12 @@ public class Messwert
         zeitstempel = Instant.now().toEpochMilli();
     }
     
+    public Messwert(double wert, long zeitmarke)
+    {
+        this.wert = wert;
+        zeitstempel = zeitmarke;
+    }
+    
     public String toString()
     {
         return wert + " bei " + zeitstempel;

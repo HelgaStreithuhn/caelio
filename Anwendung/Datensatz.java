@@ -42,7 +42,7 @@ public class Datensatz
     
     public Messwert neustenMesswerteGeben()
     {
-        return messwerte.get(0);
+        return messwerte.get(messwerte.size() - 1);
     }
     
     public Messwert maxMesswerteGeben()
@@ -60,7 +60,7 @@ public class Datensatz
         Messwert min = messwerte.get(0);
         // wenn der untersuchte wert kleiner ist als der bisher kleinste, soll er als neuer kleinster gesetzt werden
         for(Messwert vergleichswert : messwerte){
-            if(vergleichswert.wertGeben() > min.wertGeben()) min = vergleichswert; 
+            if(vergleichswert.wertGeben() < min.wertGeben()) min = vergleichswert; 
         }
         return min;
     }
