@@ -1,5 +1,8 @@
+# Java
 *.class
 *.ctxt
+
+# LaTeX
 *.aux
 *.log
 *.nav
