@@ -1,7 +1,3 @@
-/*
- * Stand: 01.03.2021
- */
-
 import java.util.ArrayList;
 
 public class Datensatz
@@ -28,6 +24,7 @@ public class Datensatz
 
     public void ausgeben()
     {
+        // alle Messwerte auf Konsole ausgeben
         System.out.println("Datensatz:");
         for (int i = 0; i < messwerte.size(); i ++)
             System.out.println(messwerte.get(i).zuString());
