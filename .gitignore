@@ -3,6 +3,7 @@
 *.ctxt
 
 # LaTeX
+Abbildungen/
 *.aux
 *.log
 *.nav
