@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Anwendung
-comment0.text=\n\ Klasse\ zum\ Starten\ der\ Anwendung\n
-comment1.params=argumente
-comment1.target=void\ main(java.lang.String[])
-comment2.params=stufe
-comment2.target=void\ start(javafx.stage.Stage)
-numComments=3
