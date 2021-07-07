@@ -4,16 +4,23 @@ import java.nio.charset.StandardCharsets;
 public abstract class InternetVerbinder {
     public static String httpGetAnfrage (String url) throws Exception {
         URL adresse = new URL(url);
+        // Verbindung zum Internet wird hergestellt
         URLConnection verbindung = adresse.openConnection();
+        // Website, zu der Verbindung hergestellt wurde, auslesen
         BufferedReader ein = new BufferedReader(new InputStreamReader(verbindung.getInputStream()));
+        
+        // Ganze Website auslesen und in String text speichern:
         String eingangsZeile;
         String text = "";
         while ((eingangsZeile = ein.readLine()) != null){
             text = text + "\n" + eingangsZeile;
         }
+        //Verbindung wird nicht mehr benötigt -> wird geschlossen
         ein.close();
+        
         return text;
     }
+    //TODO: brauchts des?
     public static String httpPostAnfrage (String url, String args) throws Exception {
         URL adresse = new URL(url);
         URLConnection verbindung = adresse.openConnection();
@@ -31,6 +38,8 @@ public abstract class InternetVerbinder {
         } catch(Exception e){
             System.out.println(e);
         }
+        
+        // vgl. Get-Anfrage
         BufferedReader eingang = new BufferedReader(new InputStreamReader(anfrage.getInputStream()));
         String eingangsZeile;
         String text = "";
@@ -39,11 +48,5 @@ public abstract class InternetVerbinder {
         }
         eingang.close();
         return text;
-        }
-    public static void versuchsAnfrage1() throws Exception{
-        System.out.println(httpGetAnfrage("http://example.org/"));
-    }
-    public static void versuchsAnfrage2() throws Exception{
-        System.out.println(httpPostAnfrage("https://httpbin.org/anything","foo=bar&te=st"));
     }
 }
