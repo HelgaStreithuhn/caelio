@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Datensatz
+comment1.params=messwerte_\ einheit_
+comment1.target=Datensatz(java.util.ArrayList,\ java.lang.String)
+comment2.params=einheit_
+comment2.target=Datensatz(java.lang.String)
+comment3.params=messwert
+comment3.target=void\ einfuegen(Messwert)
+comment4.params=
+comment4.target=void\ ausgeben()
+comment5.params=
+comment5.target=java.util.ArrayList\ messwerteGeben()
+comment6.params=
+comment6.target=java.lang.String\ einheitGeben()
+comment7.params=
+comment7.target=Messwert\ neustenMesswerteGeben()
+numComments=8
