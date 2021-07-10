@@ -1,17 +1,16 @@
 #BlueJ class context
 comment0.target=Messwert
-comment1.params=wert_
-comment1.target=Messwert(double)
-comment2.params=wert\ zeitmarke
-comment2.target=Messwert(double,\ long)
+comment1.params=wert\ zeitmarke
+comment1.target=Messwert(double,\ long)
+comment1.text=\n\ \ \ \ public\ Messwert(double\ wert_)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ wert\ \=\ wert_;\n\ \ \ \ \ \ \ \ zeitstempel\ \=\ Instant.now().toEpochMilli();\n}/*
+comment2.params=
+comment2.target=java.lang.String\ toString()
 comment3.params=
-comment3.target=java.lang.String\ toString()
+comment3.target=double\ wertGeben()
 comment4.params=
-comment4.target=double\ wertGeben()
+comment4.target=long\ zeitstempelGeben()
 comment5.params=
-comment5.target=long\ zeitstempelGeben()
+comment5.target=java.lang.String\ ausgeben()
 comment6.params=
-comment6.target=java.lang.String\ ausgeben()
-comment7.params=
-comment7.target=java.lang.String\ wertAlsTextGeben()
-numComments=8
+comment6.target=java.lang.String\ wertAlsTextGeben()
+numComments=7

@@ -13,11 +13,12 @@ public class Messwert
     private double wert;
     private long zeitstempel;
     
+    /*
     public Messwert(double wert_)
     {
         wert = wert_;
         zeitstempel = Instant.now().toEpochMilli();
-    }
+    }/**/
     
     public Messwert(double wert, long zeitmarke)
     {

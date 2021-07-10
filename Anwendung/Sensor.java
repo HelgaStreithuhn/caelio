@@ -58,7 +58,7 @@ public class Sensor
             long unixzeit = sourceFormat.parse(timestamp).getTime();
             datensatz.einfuegen(new Messwert(value, unixzeit));
         } catch (Exception e) {
-            datensatz.einfuegen(new Messwert(value));
+            //datensatz.einfuegen(new Messwert(value));
             System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, beim Versuch den String " + timestamp + " als Datum zu verwenden)");
         } finally {
             parent.sensorHatGemessen(localTime, this.name);

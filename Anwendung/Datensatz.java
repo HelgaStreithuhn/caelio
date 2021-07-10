@@ -19,6 +19,8 @@ public class Datensatz
     
     public void einfuegen(Messwert messwert)
     {
+        //Todo: hier soll doppeltes Einfügen des selben Datensatzes verhindert werden
+        //if(neustenMesswerteGeben().zeitstempelGeben() != messwert.zeitstempelGeben())
         messwerte.add(messwert);
     }
 

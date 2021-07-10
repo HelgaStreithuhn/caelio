@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Messintervallgeber
+comment1.params=
+comment1.target=void\ run()
+comment2.params=msIntervall
+comment2.target=Messintervallgeber(long)
+comment3.params=s
+comment3.target=void\ sensorAnmelden(Sensor)
+numComments=4
