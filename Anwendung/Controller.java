@@ -155,7 +155,7 @@ public class Controller implements Beobachter
         {
             // Sensorbox wird initialisiert
             sensorbox.datenLaden();
-            
+
             // Oberfläche wird mit Daten der Sensorbox gefüllt
             aktualisieren();
         }
@@ -164,72 +164,89 @@ public class Controller implements Beobachter
             System.out.println(e + "(Fehler beim initialisieren der Sensorbox)");
         }
     }
-
     
     public void aktualisieren(){
+        aktualisieren("Temperatur");
+        aktualisieren("rel. Luftfeuchte");
+        aktualisieren("Beleuchtungsstärke");
+        aktualisieren("PM10");
+        aktualisieren("CO₂");
+        aktualisieren("Luftdruck");
+        aktualisieren("UV-Intensität");
+    }
+    public void aktualisieren(String wasAktualisieren){
         // wenn neue/andere Daten in der Sensorbox vorliegen, sollen diese auch in der Oberfläche erscheinen.
         //Diese Methode aktualisiert die Oberfläche in diesem Fall.
-        
-        
+
         //Standort und Uhrzeit der letzten Messung werden im Tab Übersicht angezeigt
         uebersichtStandort.setText(sensorbox.nameGeben());
         uebersichtMesszeit.setText(sensorbox.letzteMessungGeben());
-        
-        
-        //in alle Felder aktuelle Daten einfüllen
-        String tempAkt  = sensorbox.neuesteDatenGeben("Temperatur");
-        uebersichtTemperatur.setText(tempAkt);
-        this.tempAktuell.setText(tempAkt);
-        
-        String luftfeucht = sensorbox.neuesteDatenGeben("rel. Luftfeuchte");
-        uebersichtLuftfeuchtigkeit.setText(luftfeucht);
-        this.feuchtAktuell.setText(luftfeucht);
-        
-        String leucht = sensorbox.neuesteDatenGeben("Beleuchtungsstärke");
-        uebersichtBeleuchtung.setText(leucht);
-        this.beleuchtungAktuell.setText(leucht);
-        
-        //Feinstaub wird in zwei verschiedenen Größen gemessen -> beide sollen angezeigt werden
-        String staub10 = sensorbox.neuesteDatenGeben("PM10");
-        String staub2 = sensorbox.neuesteDatenGeben("PM2.5");
-        String staubGanz = staub10 + "(PM10), " + staub2 + "(PM2,5)";
-        uebersichtFeinstaub.setText(staubGanz);
-        this.staubAktuell.setText(staubGanz);
-        
-        String kohlendiox = sensorbox.neuesteDatenGeben("CO₂");
-        uebersichtCo2.setText(kohlendiox);
-        this.co2Aktuell.setText(kohlendiox);
-        
-        String druck = sensorbox.neuesteDatenGeben("Luftdruck");
-        uebersichtLuftdruck.setText(druck);
-        this.druckAktuell.setText(druck);
-        
-        String intense = sensorbox.neuesteDatenGeben("UV-Intensität");
-        uebersichtUV.setText(intense);
-        this.uvAktuell.setText(intense);
-        
-        // TODO: in arbeit: in alle Felder max und min werte eintragen
-        
-        tempMax.setText(sensorbox.extremDatenGeben("Temperatur", true));
-        tempMin.setText(sensorbox.extremDatenGeben("Temperatur", false));
-        
-        feuchtMax.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", true));
-        feuchtMin.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", false));
-        
-        beleuchtungMax.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", true));
-        beleuchtungMin.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", false));
-        
-        // TODO : ??? staubMax.setText(sensorbox.extremDatenGeben("Temperatur", true)); udn für co2
-        
-        druckMax.setText(sensorbox.extremDatenGeben("Luftdruck", true));
-        druckMin.setText(sensorbox.extremDatenGeben("Luftdruck", false));
-        
-        uvMax.setText(sensorbox.extremDatenGeben("UV-Intensität", true));
-        uvMin.setText(sensorbox.extremDatenGeben("UV-Intensität", false));
-        
+
+        // nur in gefragte Felder aktuelle Daten einfüllen:
+        switch(wasAktualisieren){
+            
+            case "Temperatur":
+            String tempAkt  = sensorbox.neuesteDatenGeben("Temperatur");
+            uebersichtTemperatur.setText(tempAkt);
+            this.tempAktuell.setText(tempAkt);
+            tempMax.setText(sensorbox.extremDatenGeben("Temperatur", true));
+            tempMin.setText(sensorbox.extremDatenGeben("Temperatur", false));
+            break;
+            
+            case "rel. Luftfeuchte":
+            String luftfeucht = sensorbox.neuesteDatenGeben("rel. Luftfeuchte");
+            uebersichtLuftfeuchtigkeit.setText(luftfeucht);
+            this.feuchtAktuell.setText(luftfeucht);
+            feuchtMax.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", true));
+            feuchtMin.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", false));
+            break;
+            
+            case "Beleuchtungsstärke":
+            String leucht = sensorbox.neuesteDatenGeben("Beleuchtungsstärke");
+            uebersichtBeleuchtung.setText(leucht);
+            this.beleuchtungAktuell.setText(leucht);
+            beleuchtungMax.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", true));
+            beleuchtungMin.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", false));
+            break;
+            
+            case "PM10":
+            case "PM2.5":
+            //Feinstaub wird in zwei verschiedenen Größen gemessen -> beide sollen angezeigt werden
+            String staub10 = sensorbox.neuesteDatenGeben("PM10");
+            String staub2 = sensorbox.neuesteDatenGeben("PM2.5");
+            String staubGanz = staub10 + "(PM10), " + staub2 + "(PM2,5)";
+            uebersichtFeinstaub.setText(staubGanz);
+            this.staubAktuell.setText(staubGanz);
+            //TODO: Extremwerte Staub?
+            break;
+            
+            case "CO₂":
+            String kohlendiox = sensorbox.neuesteDatenGeben("CO₂");
+            uebersichtCo2.setText(kohlendiox);
+            this.co2Aktuell.setText(kohlendiox);
+            co2Max.setText(sensorbox.extremDatenGeben("CO₂", true));
+            co2Min.setText(sensorbox.extremDatenGeben("CO₂", false));
+            // TODO: Test mit CO2 - Messreihen
+            break;
+
+            case "Luftdruck":
+            String druck = sensorbox.neuesteDatenGeben("Luftdruck");
+            uebersichtLuftdruck.setText(druck);
+            this.druckAktuell.setText(druck);
+            druckMax.setText(sensorbox.extremDatenGeben("Luftdruck", true));
+            druckMin.setText(sensorbox.extremDatenGeben("Luftdruck", false));
+            break;
+            
+            case "UV-Intensität":
+            String intense = sensorbox.neuesteDatenGeben("UV-Intensität");
+            uebersichtUV.setText(intense);
+            this.uvAktuell.setText(intense);
+            uvMax.setText(sensorbox.extremDatenGeben("UV-Intensität", true));
+            uvMin.setText(sensorbox.extremDatenGeben("UV-Intensität", false));
+            break;
+        }
     } 
-    
-    
+
     @FXML
     void initialize()
     {

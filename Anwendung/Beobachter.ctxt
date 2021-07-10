@@ -2,4 +2,6 @@
 comment0.target=Beobachter
 comment1.params=
 comment1.target=void\ aktualisieren()
-numComments=2
+comment2.params=wasAktualisieren
+comment2.target=void\ aktualisieren(java.lang.String)
+numComments=3

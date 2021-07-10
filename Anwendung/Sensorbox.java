@@ -13,6 +13,7 @@ public class Sensorbox
     private String kennung, letzteMessung, name;
     public ArrayList<Sensor> sensoren;
     private ArrayList<Beobachter> beobachter;
+    private Messintervallgeber mig;
 
     public Sensorbox(String kennung_)
     {
@@ -22,8 +23,16 @@ public class Sensorbox
 
         // Beobachter werden über Aenderungen informiert
         beobachter = new ArrayList<Beobachter>();
+        
+        //Messzeitgeber lässt Sensoren daten nachladen
+        mig = new Messintervallgeber(20000);
+        mig.start();
     }
-
+    
+    public void anMessenErinnern(Sensor s){
+        mig.sensorAnmelden(s);
+    }
+    
     public void datenLaden() throws Exception
     {
         //Diese Methode initialisiert die Sensoren der Sensorbox.
@@ -97,12 +106,12 @@ public class Sensorbox
     
 
 
-    public void sensorHatGemessen(String zeit)
+    public void sensorHatGemessen(String zeit, String welcherSensor)
     {
         letzteMessung = zeit;
         // Benachrichtigung der Beobachter
         for (int i = 0; i < beobachter.size(); i++){
-            beobachter.get(i).aktualisieren();
+            beobachter.get(i).aktualisieren(welcherSensor);
         }
     }
 

@@ -19,6 +19,7 @@ public class Sensor
     public String name;
     public String id;
     private Sensorbox parent;
+    
 
     public Sensor(String einheit, String name, String _id, Sensorbox parent)
     {
@@ -31,7 +32,8 @@ public class Sensor
         // Initiieren der Beobachter
 
         // Messen
-       /* Timer timer = new Timer();
+        parent.anMessenErinnern(this);
+        /*Timer timer = new Timer();
         timer.schedule(new TimerTask()
             {
                 public void run()
@@ -45,14 +47,14 @@ public class Sensor
                         System.out.println("Fehler beim Messen.");
                     }
                 }
-            }, 0, 20000);*/
+            }, 0, 20000);/**/
     }
 
     
     
     public void messen() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + parent.getKennung() + "/sensors/" + id + "?format=json");
-        //System.out.println(rohdaten);
+        System.out.println(rohdaten);
         JSONObject messwert = new JSONObject(rohdaten).getJSONObject("lastMeasurement");
         messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
     }
@@ -74,7 +76,7 @@ public class Sensor
             datensatz.einfuegen(new Messwert(value));
             System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, beim Versuch den String " + timestamp + " als Datum zu verwenden)");
         } finally {
-            parent.sensorHatGemessen(localTime);
+            parent.sensorHatGemessen(localTime, this.name);
         }
     }
     
