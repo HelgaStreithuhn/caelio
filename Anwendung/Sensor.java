@@ -19,35 +19,20 @@ public class Sensor
     public String name;
     public String id;
     private Sensorbox parent;
-    
 
     public Sensor(String einheit, String name, String _id, Sensorbox parent)
     {
         this.parent = parent;
         this.name = name;
         this.id = _id;
-        // Ein Sensor hat einen Datensatz
-        datensatz = new Datensatz(einheit);
-
-        // Initiieren der Beobachter
-
-        // Messen
+        this.datensatz = new Datensatz(einheit);
+        
+        // Die Sensorbox besitzt einen Intervalltimer, der alle dort angemeldeten Sensoren regelmäßig 
+        // zum Messen auffordert. Zwar könnte man auch für jeden Sensor einen eigenen Timer erstellen, 
+        // das wäre jedoch langsamer (da mehr Objekte insgesamt) als geteilte Nutzung.
+        // Um regelmäßig aktuelle Daten zu erhalten, muss sich der Sensor also dort anmelden:
         parent.anMessenErinnern(this);
-        /*Timer timer = new Timer();
-        timer.schedule(new TimerTask()
-            {
-                public void run()
-                {
-                    try
-                    {
-                        messen();
-                    }
-                    catch (Exception fehler)
-                    {
-                        System.out.println("Fehler beim Messen.");
-                    }
-                }
-            }, 0, 20000);/**/
+        
     }
 
     

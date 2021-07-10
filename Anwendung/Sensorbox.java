@@ -24,7 +24,7 @@ public class Sensorbox
         // Beobachter werden über Aenderungen informiert
         beobachter = new ArrayList<Beobachter>();
         
-        //Messzeitgeber lässt Sensoren daten nachladen
+        //Messzeitgeber lässt Sensoren Daten nachladen
         mig = new Messintervallgeber(20000);
         mig.start();
     }
@@ -39,7 +39,7 @@ public class Sensorbox
 
         //als erstes werden alle aktuellen Messungen der Sensoren im JSON-Format abgerufen:
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + kennung + "?format=json");
-
+        
         JSONObject ergebnis = new JSONObject(rohdaten);
         this.name = ergebnis.getString("name");
 
@@ -48,9 +48,9 @@ public class Sensorbox
         SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         sourceFormat.setTimeZone(utc);
         SimpleDateFormat destFormat = new SimpleDateFormat("HH:mm:ss");
-
         letzteMessung = destFormat.format(sourceFormat.parse(ergebnis.getString("updatedAt")));
-
+        
+        // Alle Sensoren der Sensorbox werden als Objekte erstellt und in die sensoren-Liste hinzugefügt
         sensoren.clear();
         JSONArray sensorenJSON = ergebnis.getJSONArray("sensors");
         for (Object sensor : sensorenJSON){
@@ -75,7 +75,7 @@ public class Sensorbox
             return String.valueOf(datensatzFinden(name).neustenMesswerteGeben().wertGeben()) + String.valueOf(datensatzFinden(name).einheitGeben());
         }
         catch (Exception e){
-            System.out.println(e + " (Klasse Sensorbox)");
+            System.out.println(e + " (Klasse Sensorbox, Methode neusteDatenGeben)");
         }
         return "N/A";
     }
@@ -89,7 +89,7 @@ public class Sensorbox
             }
         }
         catch (Exception e){
-            System.out.println(e + " (Klasse Sensorbox)");
+            System.out.println(e + " (Klasse Sensorbox, Methode extremDatenGeben)");
         }
         return "N/A";
     }

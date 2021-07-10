@@ -58,5 +58,24 @@ public class CodeFriedhof
         letzteMessung = destFormat.format(sourceFormat.parse(ergebnis.getString("updatedAt")));
     }
     */
+   
+   
+   /* Aus der Klasse Sensor, Konstruktor: alter Timer warf ständig Fehler
+    * 
+    Timer timer = new Timer();
+        timer.schedule(new TimerTask()
+            {
+                public void run()
+                {
+                    try
+                    {
+                        messen();
+                    }
+                    catch (Exception fehler)
+                    {
+                        System.out.println("Fehler beim Messen.");
+                    }
+                }
+            }, 0, 20000);/**/
     
 }
