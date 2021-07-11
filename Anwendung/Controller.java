@@ -143,12 +143,13 @@ public class Controller implements Beobachter
     private TextField staubMax;
 
     @FXML
-    private ChoiceBox<?> datenbank;
+    private ChoiceBox<String> datenbank;
+    //Möglicher Ansatz zum auswählen neuer Datenbanken: 3 Textfelder (Id, Breitengrad, Längengrad)
+        //Diese Abfrage: https://api.opensensemap.org/boxes?bbox=180,90,-180,-90&minimal=true&near=11.448381,48.256268&maxDistance=2000
 
     public void sensorboxLaden()
     {
         // Sensorbox ITG
-        //sensorbox = new Sensorbox("606dabb74393eb001ca6a781");
         sensorbox = new Sensorbox("607db857542eeb001cba21f0");
         sensorbox.interesseAnmelden(this);
         try
@@ -217,7 +218,11 @@ public class Controller implements Beobachter
             String staubGanz = staub10 + "(PM10), " + staub2 + "(PM2,5)";
             uebersichtFeinstaub.setText(staubGanz);
             this.staubAktuell.setText(staubGanz);
-            //TODO: Extremwerte Staub?
+            String maxWerte = sensorbox.extremDatenGeben("PM10", true) + "(PM10), " + sensorbox.extremDatenGeben("PM2.5", true) + "(PM2.5)";
+            this.staubMax.setText(maxWerte);
+            String minWerte = sensorbox.extremDatenGeben("PM10", false) + "(PM10), " + sensorbox.extremDatenGeben("PM2.5", false) + "(PM2.5)";
+            this.staubMin.setText(minWerte);
+            //TODO: Extremwerte Staub testen
             break;
             
             case "CO₂":
