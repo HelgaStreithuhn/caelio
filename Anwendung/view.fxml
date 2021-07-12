@@ -22,15 +22,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
   <tabs>
     <Tab text="Übersicht">
       <content>
             <VBox spacing="10.0" styleClass="hintergrundGradient">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox spacing="10.0" styleClass="hintergrundWerte">
                      <children>
-                        <HBox spacing="10.0" styleClass="hintergrundWerte">
+                        <HBox spacing="10.0">
                            <children>
                               <Label text="aktueller Standort:" />
                               <TextField fx:id="uebersichtStandort" editable="false" />
@@ -38,9 +38,12 @@
                               <TextField fx:id="uebersichtMesszeit" editable="false" />
                            </children>
                         </HBox>
+                        <Button fx:id="buttonAktualisieren" mnemonicParsing="false" text="Aktualisieren" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </VBox>
-                  <Button fx:id="buttonAktualisieren" mnemonicParsing="false" text="Aktualisieren" />
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="hintergrundWerte">
                      <children>
                         <Label text="aktuelle Werte:" />
