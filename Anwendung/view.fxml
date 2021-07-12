@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller" styleClass="menuLeiste">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="menuLeiste" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
   <tabs>
     <Tab text="Übersicht">
       <content>
@@ -377,7 +377,7 @@
                   <TextField fx:id="staubAktuell" editable="false" layoutX="271.0" layoutY="46.0" />
                   <TextField fx:id="staubMin" editable="false" layoutX="271.0" layoutY="121.0" />
                   <TextField fx:id="staubMax" editable="false" layoutX="271.0" layoutY="82.0" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="16.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icons/feinstaub.png" />
                      </image>

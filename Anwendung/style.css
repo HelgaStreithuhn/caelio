@@ -17,14 +17,16 @@
 
 /* Hintergrund */
 .hintergrundGradient, AnchorPane{
-    -fx-background-color: linear-gradient(to left top, #ded, #70defa);
+    -fx-background-color: linear-gradient(to left top, #93afcd, #70defa);
 }
 .hintergrundWerte {
     -fx-background-color: white;
     -fx-border-color: black;
 }
 
-
+/* alt: .hintergrundGradient, AnchorPane{
+    -fx-background-color: linear-gradient(to left top, #ded, #70defa);
+}*/
 
 
 
