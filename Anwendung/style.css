@@ -1,27 +1,7 @@
+/* Schrift */
 *{
     -fx-font-family: "Noto Sans", "Helvetica", sans-serif;
     -fx-font-size: 1em;
-}
-
-/* Tab pane styling */
-TabPane{
-    -fx-tab-min-width: 50px;
-}
-
-TextField{
-    -fx-background-color: #abefde66;
-}
-
-.tab {
-    -fx-background-color: linear-gradient(to top, #abefdf, #beffef);
-}
-
-.hintergrundGradient, AnchorPane{
-    -fx-background-color: linear-gradient(to left top, #ded, #70defa);
-}
-.hintergrundWerte {
-    -fx-background-color: white;
-    -fx-border-color: black;
 }
 .header{
     -fx-font-size: 2em;
@@ -31,15 +11,56 @@ TextField{
 .subHeader{
     -fx-font-size: 1.5em;
 }
-.ampelLicht{
-    -fx-stroke: none;
+
+
+
+
+/* Hintergrund */
+.hintergrundGradient, AnchorPane{
+    -fx-background-color: linear-gradient(to left top, #ded, #70defa);
 }
-.aus{
-    -fx-fill: linear-gradient(to top, #666, #222);
-    -fx-stroke: none;
+.hintergrundWerte {
+    -fx-background-color: white;
+    -fx-border-color: black;
 }
-.ampelContainer{
-    -fx-spacing: 3px;
-    -fx-background-color: linear-gradient(to top , #555, #999);
-    -fx-background-radius: 5px;
+
+
+
+
+
+/* Menü */
+TabPane{
+    -fx-tab-min-width: 50px;
+}
+.tab {
+    -fx-background-color: linear-gradient(to top, #abefdf, #beffef);
+    -fx-border-color: #ffffff00;
+}
+
+
+
+
+
+/* Kontrollfelder */
+
+ChoiceBox{
+    -fx-background-color: linear-gradient(to right, #abefde, #bff7ee);
+    -fx-font-size: 1em;
+    -fx-background-radius: 0.7em;
+}
+
+Button{
+    -fx-background-color: linear-gradient(to right, #abefde, #bff7ee);
+    -fx-font-size: 1em;
+    -fx-background-radius: 0.7em;
+}
+
+TextField{
+    -fx-background-radius: 0.7em;
+    -fx-font-size: 1em;
+    -fx-background-color: linear-gradient(to right, #abefde, #bff7ee);
+}
+
+menuLeiste{
+    -fx-background-color: #a33
 }

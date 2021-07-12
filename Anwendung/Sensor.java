@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
-
-/*
- * Klasse zur Verwaltung eines Datensatzes
- */
+import java.lang.ref.*;
 
 public class Sensor
 {
@@ -16,19 +13,24 @@ public class Sensor
     public Datensatz datensatz;
     public String name;
     public String id;
-    private Sensorbox parent;
+    private WeakReference<Sensorbox> parent;
 
     public Sensor(String einheit, String name, String _id, Sensorbox parent)
     {
-        this.parent = parent;
+        /* da der Sensor die Sensorbox informieren muss (z. B. wenn er neu gemessen hat)
+        * benötigt jeder Sensor eine Referenz auf die Sensorbox.
+        * Wenn jedoch die Sensorbox zurückgesetzt oder ersetzt wird, verhindert eben diese Referenz eine
+        * Löschung der Sensorbox. Deshalb muss diese Verbindung als WeakReference 
+        * erstellt sein; weak-Verbindungen reichen nämlich nicht aus um die Löschung zu verhindern */
+        this.parent = new WeakReference(parent);
         this.name = name;
         this.id = _id;
         this.datensatz = new Datensatz(einheit);
         
-        // Die Sensorbox besitzt einen Intervalltimer, der alle dort angemeldeten Sensoren regelmäßig 
-        // zum Messen auffordert. Zwar könnte man auch für jeden Sensor einen eigenen Timer erstellen, 
-        // das wäre jedoch langsamer (da mehr Objekte insgesamt) als geteilte Nutzung.
-        // Um regelmäßig aktuelle Daten zu erhalten, muss sich der Sensor also dort anmelden:
+        /* Die Sensorbox besitzt einen Intervalltimer, der alle dort angemeldeten Sensoren regelmäßig 
+        * zum Messen auffordert. Zwar könnte man auch für jeden Sensor einen eigenen Timer erstellen, 
+        * das wäre jedoch langsamer (da mehr Objekte insgesamt) als geteilte Nutzung.
+        * Um regelmäßig aktuelle Daten zu erhalten, muss sich der Sensor also dort anmelden: */
         parent.anMessenErinnern(this);
         
     }
@@ -36,7 +38,7 @@ public class Sensor
     
     
     public void messen() throws Exception{
-        String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + parent.getKennung() + "/sensors/" + id + "?format=json");
+        String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + parent.get().getKennung() + "/sensors/" + id + "?format=json");
         System.out.println(rohdaten);
         JSONObject messwert = new JSONObject(rohdaten).getJSONObject("lastMeasurement");
         messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
@@ -59,7 +61,7 @@ public class Sensor
             //datensatz.einfuegen(new Messwert(value));
             System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, beim Versuch den String " + timestamp + " als Datum zu verwenden)");
         } finally {
-            parent.sensorHatGemessen(localTime, this.name);
+            parent.get().sensorHatGemessen(localTime, this.name);
         }
     }
     

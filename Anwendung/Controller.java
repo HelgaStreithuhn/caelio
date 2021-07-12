@@ -212,6 +212,7 @@ public class Controller implements Beobachter
         if (name == null) return;
          // id steht in klammern am ende des namens, wird wieder extrahiert, um damit eine neue SenseBox zu verbinden:
         String id = name.substring(name.lastIndexOf('(') + 1, name.length() - 1 );
+        sensorbox = null;
         sensorboxLaden(id);
     }
 
