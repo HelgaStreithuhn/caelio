@@ -11,8 +11,6 @@ Anwendung zur Überwachung von Luft-Messwerten.
 ## Beschreibung
 
 Die Anwendung stellt eine grafische Oberfläche zur Überwachung von Luft-Messwerten von [SenseBoxen](https://sensebox.de/), welche auf der [OpenSenseMap](https://opensensemap.org/) zu finden sind, bereit.
-Info Beschreibung des Projekts
-Caelio
 
 Caelio ist ein Programm, welches Messdaten einer Wetterstation anschaulich ausgeben kann. Hierbei werden aktuell die Daten einer sogenannten SenseBox, die derzeit am Ignaz-Taschner-Gymnasium in Dachau ihren Standpunkt hat, verwendet. Folgende Daten können eingesehen werden: Temperatur, Luftfeuchtigkeit, Luftdruck, Beleuchtungsstärke, UV-Intensität und Feinstaub.
 Diese Daten werden bei Internetverbindung ungefähr minütlich aktualisiert.
