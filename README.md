@@ -16,11 +16,11 @@ Caelio ist ein Programm, welches Messdaten einer Wetterstation anschaulich ausge
 Diese Daten werden bei Internetverbindung ungefähr minütlich aktualisiert.
 
 Verwendete Einheiten:
-Temperatur: C°
-Luftfeuchtigkeit: %
-Luftdruck: 1 hPa = 100 Pa (Pascal) = 100 Newton / Quadratmeter (Mittlerer Luftdruck der Erdatmosphäre auf Meereshöhe: 1013,25 hPa)
-Beleuchtungsstärke: lx (Lux)
-UV-Intensität: μW/cm² (Mikrowatt / Quadratzentimeter) (unbedenkliche UV-Intensität bei ca.: 5.62μW/cm²)
+Temperatur: C°;
+Luftfeuchtigkeit: %;
+Luftdruck: 1 hPa = 100 Pa (Pascal) = 100 Newton / Quadratmeter (Mittlerer Luftdruck der Erdatmosphäre auf Meereshöhe: 1013,25 hPa);
+Beleuchtungsstärke: lx (Lux) (Wert der Beleuchtungsstärke bei einem wolkenfreiem Sommertag ca.: 100.000 lx);
+UV-Intensität: μW/cm² (Mikrowatt / Quadratzentimeter) (unbedenkliche UV-Intensität bei einem Wert von ca.: 5.62μW/cm²);
 Feinstaub: µg/m³ (PM10) (Mikrogramm / Kubikmeter; PM10 ≙ Partikel mit aerodynamischem Durchmesser von weniger als 10 Mikrometer) (unbedenklicher Wert: 0.5µg/m³(PM10))
 
 ## Bedienung
