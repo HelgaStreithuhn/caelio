@@ -38,7 +38,7 @@
                               <TextField fx:id="uebersichtMesszeit" editable="false" />
                            </children>
                         </HBox>
-                        <Button fx:id="buttonAktualisieren" mnemonicParsing="false" text="Aktualisieren" />
+                        <Button fx:id="buttonAktualisieren" mnemonicParsing="false" onAction="#boxWaehlen" text="Aktualisieren" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -407,7 +407,7 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Einstellungen und Beschreibung" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
-                        <ChoiceBox fx:id="datenbankwahlliste" prefHeight="25.0" prefWidth="781.0" />
+                        <ChoiceBox fx:id="datenbankwahlliste" onInputMethodTextChanged="#boxWaehlen" prefHeight="25.0" prefWidth="781.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung: Dies ist ein tolles Programm, aber noch in der Entwicklung!" />
                      </children>
                   </VBox>

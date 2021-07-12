@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.*;
 
 import org.json.*;
+import javafx.scene.control.SingleSelectionModel;
 
 /*
  * Klasse zum Verwalten der Anwendung
@@ -148,11 +149,8 @@ public class Controller implements Beobachter
 
     @FXML
     private ChoiceBox<String> datenbankwahlliste;
-    // Möglicher Ansatz zum auswählen neuer Datenbanken: 3 Textfelder (Id, Breitengrad, Längengrad)
-    // Diese Abfrage:
-
     private ObservableList<String> boxenauswahl; //Soll die aktuell im Auswahlbereich liegenden Boxen speichern, bis der Nutzer eine auswählt
-
+    
     @FXML
     void initialize()
     {
@@ -160,14 +158,14 @@ public class Controller implements Beobachter
         boxenauswahl = FXCollections.observableArrayList();
         try{
             datenbankwahlliste.setItems(boxenauswahl);
+            boxSuchen(11,48,100000);
         } catch (Exception e) { System.out.println("100: " + e);}
         // Laden der Sensorbox
         sensorboxLaden("607db857542eeb001cba21f0");
     }  
-
+    
     public void sensorboxLaden(String id)
     {
-        // Sensorbox ITG
         sensorbox = new Sensorbox(id);
         sensorbox.interesseAnmelden(this);
         try
@@ -206,6 +204,15 @@ public class Controller implements Beobachter
         } catch (Exception e) {
             System.out.println(e + "(Klasse Controller, Methode boxSuchen)");
         }
+    }
+    
+    @FXML
+    public void boxWaehlen(){
+        String name = datenbankwahlliste.getValue();
+        if (name == null) return;
+         // id steht in klammern am ende des namens, wird wieder extrahiert, um damit eine neue SenseBox zu verbinden:
+        String id = name.substring(name.lastIndexOf('(') + 1, name.length() - 1 );
+        sensorboxLaden(id);
     }
 
     public void aktualisieren(){
