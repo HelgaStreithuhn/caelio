@@ -144,13 +144,20 @@ public class Controller implements Beobachter
 
     @FXML
     private ChoiceBox<String> datenbank;
-    //Möglicher Ansatz zum auswählen neuer Datenbanken: 3 Textfelder (Id, Breitengrad, Längengrad)
-        //Diese Abfrage: https://api.opensensemap.org/boxes?bbox=180,90,-180,-90&minimal=true&near=11.448381,48.256268&maxDistance=2000
-
-    public void sensorboxLaden()
+    // Möglicher Ansatz zum auswählen neuer Datenbanken: 3 Textfelder (Id, Breitengrad, Längengrad)
+    // Diese Abfrage: 
+    
+    @FXML
+    void initialize()
+    {
+        // Laden der Sensorbox
+        sensorboxLaden("607db857542eeb001cba21f0");
+    }  
+    
+    public void sensorboxLaden(String id)
     {
         // Sensorbox ITG
-        sensorbox = new Sensorbox("607db857542eeb001cba21f0");
+        sensorbox = new Sensorbox(id);
         sensorbox.interesseAnmelden(this);
         try
         {
@@ -162,9 +169,23 @@ public class Controller implements Beobachter
         }
         catch (Exception e)
         {
-            System.out.println(e + "(Fehler beim initialisieren der Sensorbox)");
+            System.out.println(e + "(Fehler beim Initialisieren der Sensorbox)");
         }
     }
+    
+    public static String boxSuchen(float koordinateOst, float koordinateNord, int maxDist) throws Exception{
+        if(maxDist >= 100000000) throw new Exception("Unable to find sensboxes in a wide radius");
+        String adresse = "https://api.opensensemap.org/boxes?d&minimal=true&bbox=180,90,-180,-90" + //bbox enthält ganze Welt
+        "near=" + String.valueOf(koordinateOst) + "," + String.valueOf(koordinateNord) + "&maxDistance=" + String.valueOf(maxDist);
+        System.out.println(adresse);
+        String ergebnis = InternetVerbinder.httpGetAnfrage(adresse);
+        if(ergebnis.equals("[]")){
+            return boxSuchen(koordinateOst, koordinateNord, maxDist*2);
+        }
+        return ergebnis;
+    }
+    
+    
     
     public void aktualisieren(){
         aktualisieren("Temperatur");
@@ -251,11 +272,4 @@ public class Controller implements Beobachter
             break;
         }
     } 
-
-    @FXML
-    void initialize()
-    {
-        // Laden der Sensorbox
-        sensorboxLaden();
-    }
 }
