@@ -16,17 +16,17 @@
 
 
 /* Hintergrund */
-.hintergrundGradient, AnchorPane{
-    -fx-background-color: linear-gradient(to left top, #93afcd, #70defa);
-}
+/* unausgereift: .hintergrundGradient, AnchorPane{
+    -fx-background-color: linear-gradient(to bottom left, #3790ff, #70defa);
+}*/
 .hintergrundWerte {
     -fx-background-color: white;
     -fx-border-color: black;
 }
 
-/* alt: .hintergrundGradient, AnchorPane{
+.hintergrundGradient, AnchorPane{
     -fx-background-color: linear-gradient(to left top, #ded, #70defa);
-}*/
+}
 
 
 
@@ -49,19 +49,27 @@ ChoiceBox{
     -fx-background-color: linear-gradient(to right, #abefde, #bff7ee);
     -fx-font-size: 1em;
     -fx-background-radius: 0.7em;
+    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
 }
 
 Button{
     -fx-background-color: linear-gradient(to right, #abefde, #bff7ee);
     -fx-font-size: 1em;
     -fx-background-radius: 0.7em;
+    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
 }
 
 TextField{
     -fx-background-radius: 0.7em;
     -fx-font-size: 1em;
+    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
     -fx-background-color: linear-gradient(to right, #abefde, #bff7ee);
 }
+Button:hover, ChoiceBox:hover{
+    
+    -fx-effect: dropshadow(gaussian, #4444441c, 13, 0.2, 0.15, 0.15);   
+}
+
 
 menuLeiste{
     -fx-background-color: #a33
