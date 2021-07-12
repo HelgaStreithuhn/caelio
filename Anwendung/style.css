@@ -16,8 +16,12 @@ TextField{
     -fx-background-color: linear-gradient(to top, #abefdf, #beffef);
 }
 
-AnchorPane{
+.hintergrundGradient, AnchorPane{
     -fx-background-color: linear-gradient(to left top, #ded, #70defa);
+}
+.hintergrundWerte {
+    -fx-background-color: white;
+    -fx-border-color: black;
 }
 .header{
     -fx-font-size: 2em;
