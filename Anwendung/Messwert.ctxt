@@ -2,7 +2,7 @@
 comment0.target=Messwert
 comment1.params=wert\ zeitmarke
 comment1.target=Messwert(double,\ long)
-comment1.text=\n\ \ \ \ public\ Messwert(double\ wert_)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ wert\ \=\ wert_;\n\ \ \ \ \ \ \ \ zeitstempel\ \=\ Instant.now().toEpochMilli();\n}/*
+comment1.text=\r\n\ \ \ \ public\ Messwert(double\ wert_)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ wert\ \=\ wert_;\r\n\ \ \ \ \ \ \ \ zeitstempel\ \=\ Instant.now().toEpochMilli();\r\n}/*
 comment2.params=
 comment2.target=java.lang.String\ toString()
 comment3.params=

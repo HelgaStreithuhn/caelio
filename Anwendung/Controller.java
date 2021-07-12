@@ -6,6 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Circle;
+import javafx.collections.FXCollections;
+import javafx.collections.*;
+
+import org.json.*;
 
 /*
  * Klasse zum Verwalten der Anwendung
@@ -143,17 +147,24 @@ public class Controller implements Beobachter
     private TextField staubMax;
 
     @FXML
-    private ChoiceBox<String> datenbank;
+    private ChoiceBox<String> datenbankwahlliste;
     // Möglicher Ansatz zum auswählen neuer Datenbanken: 3 Textfelder (Id, Breitengrad, Längengrad)
-    // Diese Abfrage: 
-    
+    // Diese Abfrage:
+
+    private ObservableList<String> boxenauswahl; //Soll die aktuell im Auswahlbereich liegenden Boxen speichern, bis der Nutzer eine auswählt
+
     @FXML
     void initialize()
     {
+        assert datenbankwahlliste != null : "datenbankwahlliste fehlt!";
+        boxenauswahl = FXCollections.observableArrayList();
+        try{
+            datenbankwahlliste.setItems(boxenauswahl);
+        } catch (Exception e) { System.out.println("100: " + e);}
         // Laden der Sensorbox
         sensorboxLaden("607db857542eeb001cba21f0");
     }  
-    
+
     public void sensorboxLaden(String id)
     {
         // Sensorbox ITG
@@ -172,21 +183,31 @@ public class Controller implements Beobachter
             System.out.println(e + "(Fehler beim Initialisieren der Sensorbox)");
         }
     }
-    
-    public static String boxSuchen(float koordinateOst, float koordinateNord, int maxDist) throws Exception{
+
+    private static String boxSuchenJSON(double koordinateOst, double koordinateNord, int maxDist) throws Exception{
         if(maxDist >= 100000000) throw new Exception("Unable to find sensboxes in a wide radius");
-        String adresse = "https://api.opensensemap.org/boxes?d&minimal=true&bbox=180,90,-180,-90" + //bbox enthält ganze Welt
-        "near=" + String.valueOf(koordinateOst) + "," + String.valueOf(koordinateNord) + "&maxDistance=" + String.valueOf(maxDist);
+        String adresse = "https://api.opensensemap.org/boxes?minimal=true&bbox=180,90,-180,-90" + //bbox enthält ganze Welt
+            "&near=" + String.valueOf(koordinateOst) + "," + String.valueOf(koordinateNord) + "&maxDistance=" + String.valueOf(maxDist);
         System.out.println(adresse);
         String ergebnis = InternetVerbinder.httpGetAnfrage(adresse);
         if(ergebnis.equals("[]")){
-            return boxSuchen(koordinateOst, koordinateNord, maxDist*2);
+            return boxSuchenJSON(koordinateOst, koordinateNord, maxDist*2);
         }
         return ergebnis;
     }
-    
-    
-    
+
+    public void boxSuchen(double koordinateOst, double koordinateNord, int maxDist){
+        try{
+            JSONArray auswaehlbareBoxen = new JSONArray(boxSuchenJSON(koordinateOst, koordinateNord, maxDist));
+            for(Object einzelergebnis : auswaehlbareBoxen){
+                String boxNameAufOberflaeche = ((JSONObject) einzelergebnis).getString("name") + " (" + ((JSONObject) einzelergebnis).getString("_id") + ")";
+                boxenauswahl.add(boxNameAufOberflaeche);
+            }
+        } catch (Exception e) {
+            System.out.println(e + "(Klasse Controller, Methode boxSuchen)");
+        }
+    }
+
     public void aktualisieren(){
         aktualisieren("Temperatur");
         aktualisieren("rel. Luftfeuchte");
@@ -196,6 +217,7 @@ public class Controller implements Beobachter
         aktualisieren("Luftdruck");
         aktualisieren("UV-Intensität");
     }
+
     public void aktualisieren(String wasAktualisieren){
         // wenn neue/andere Daten in der Sensorbox vorliegen, sollen diese auch in der Oberfläche erscheinen.
         //Diese Methode aktualisiert die Oberfläche in diesem Fall.
@@ -206,7 +228,7 @@ public class Controller implements Beobachter
 
         // nur in gefragte Felder aktuelle Daten einfüllen:
         switch(wasAktualisieren){
-            
+
             case "Temperatur":
             String tempAkt  = sensorbox.neuesteDatenGeben("Temperatur");
             uebersichtTemperatur.setText(tempAkt);
@@ -214,7 +236,7 @@ public class Controller implements Beobachter
             tempMax.setText(sensorbox.extremDatenGeben("Temperatur", true));
             tempMin.setText(sensorbox.extremDatenGeben("Temperatur", false));
             break;
-            
+
             case "rel. Luftfeuchte":
             String luftfeucht = sensorbox.neuesteDatenGeben("rel. Luftfeuchte");
             uebersichtLuftfeuchtigkeit.setText(luftfeucht);
@@ -222,7 +244,7 @@ public class Controller implements Beobachter
             feuchtMax.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", true));
             feuchtMin.setText(sensorbox.extremDatenGeben("rel. Luftfeuchte", false));
             break;
-            
+
             case "Beleuchtungsstärke":
             String leucht = sensorbox.neuesteDatenGeben("Beleuchtungsstärke");
             uebersichtBeleuchtung.setText(leucht);
@@ -230,7 +252,7 @@ public class Controller implements Beobachter
             beleuchtungMax.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", true));
             beleuchtungMin.setText(sensorbox.extremDatenGeben("Beleuchtungsstärke", false));
             break;
-            
+
             case "PM10":
             case "PM2.5":
             //Feinstaub wird in zwei verschiedenen Größen gemessen -> beide sollen angezeigt werden
@@ -245,7 +267,7 @@ public class Controller implements Beobachter
             this.staubMin.setText(minWerte);
             //TODO: Extremwerte Staub testen
             break;
-            
+
             case "CO₂":
             String kohlendiox = sensorbox.neuesteDatenGeben("CO₂");
             uebersichtCo2.setText(kohlendiox);
@@ -262,7 +284,7 @@ public class Controller implements Beobachter
             druckMax.setText(sensorbox.extremDatenGeben("Luftdruck", true));
             druckMin.setText(sensorbox.extremDatenGeben("Luftdruck", false));
             break;
-            
+
             case "UV-Intensität":
             String intense = sensorbox.neuesteDatenGeben("UV-Intensität");
             uebersichtUV.setText(intense);
