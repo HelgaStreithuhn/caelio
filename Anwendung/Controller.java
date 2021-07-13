@@ -148,6 +148,11 @@ public class Controller implements Beobachter
     private TextField staubMax;
 
     @FXML
+    private TextField langgr;
+    @FXML
+    private TextField breitgr;
+    
+    @FXML
     private ChoiceBox<String> datenbankwahlliste;
     private ObservableList<String> boxenauswahl; //Soll die aktuell im Auswahlbereich liegenden Boxen speichern, bis der Nutzer eine auswählt
     
@@ -159,7 +164,7 @@ public class Controller implements Beobachter
         try{
             datenbankwahlliste.setItems(boxenauswahl);
             boxSuchen(11,48,100000);
-        } catch (Exception e) { System.out.println("100: " + e);}
+        } catch (Exception e) { System.out.println("öhm: " + e);}
         // Laden der Sensorbox
         sensorboxLaden("607db857542eeb001cba21f0");
     }  
@@ -209,13 +214,21 @@ public class Controller implements Beobachter
     @FXML
     public void boxWaehlen(){
         String name = datenbankwahlliste.getValue();
-        if (name == null) return;
-         // id steht in klammern am ende des namens, wird wieder extrahiert, um damit eine neue SenseBox zu verbinden:
+        if (name == null || name.equals(sensorbox.getShowName()) ) return;
+        
+        // id steht in klammern am ende des namens, wird wieder extrahiert, um damit eine neue SenseBox zu verbinden:
         String id = name.substring(name.lastIndexOf('(') + 1, name.length() - 1 );
         sensorbox = null;
         sensorboxLaden(id);
     }
 
+    @FXML public void boxenSuchen(){
+        try{
+            boxSuchen(Integer.valueOf(langgr.getText()),Integer.valueOf(breitgr.getText()),100000);
+        } catch (Exception e) { System.out.println("Ähm: " + e);}
+        
+    }
+    
     public void aktualisieren(){
         aktualisieren("Temperatur");
         aktualisieren("rel. Luftfeuchte");

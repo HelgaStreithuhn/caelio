@@ -104,7 +104,7 @@ public class Sensorbox
         throw new Exception("Der angeforderte Datensatz konnte nicht gefunden werden: " + name);
     }
     
-
+    public String getShowName(){return name + " (" + kennung + ")";}
 
     public void sensorHatGemessen(String zeit, String welcherSensor)
     {

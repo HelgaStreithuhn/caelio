@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Controller
-comment0.text=\r\n\ Klasse\ zum\ Verwalten\ der\ Anwendung\r\n
+comment0.text=\n\ Klasse\ zum\ Verwalten\ der\ Anwendung\n
 comment1.params=
 comment1.target=void\ initialize()
 comment2.params=id
@@ -12,7 +12,9 @@ comment4.target=void\ boxSuchen(double,\ double,\ int)
 comment5.params=
 comment5.target=void\ boxWaehlen()
 comment6.params=
-comment6.target=void\ aktualisieren()
-comment7.params=wasAktualisieren
-comment7.target=void\ aktualisieren(java.lang.String)
-numComments=8
+comment6.target=void\ boxenSuchen()
+comment7.params=
+comment7.target=void\ aktualisieren()
+comment8.params=wasAktualisieren
+comment8.target=void\ aktualisieren(java.lang.String)
+numComments=9
