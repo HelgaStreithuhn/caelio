@@ -224,7 +224,7 @@ public class Controller implements Beobachter
 
     @FXML public void boxenSuchen(){
         try{
-            boxSuchen(Integer.valueOf(langgr.getText()),Integer.valueOf(breitgr.getText()),100000);
+            boxSuchen(Integer.valueOf(breitgr.getText()),Integer.valueOf(langgr.getText()),100000);
         } catch (Exception e) { System.out.println("Ähm: " + e);}
         
     }
