@@ -47,20 +47,20 @@ ChoiceBox{
     -fx-background-color: linear-gradient(to bottom right, #3790ffaa, #70defaaa, #47a0ffaa);
     -fx-font-size: 1em;
     -fx-background-radius: 0.7em;
-    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
+    -fx-effect: dropshadow(gaussian, #44444424, 10, 0.3, 0.0, 0.0);
 }
 
 Button{
     -fx-background-color: linear-gradient(to right, #3790ffaa, #70defaaa);
     -fx-font-size: 1em;
     -fx-background-radius: 0.7em;
-    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
+    -fx-effect: dropshadow(gaussian, #44444424, 10, 0.3, 0.0, 0.0);
 }
 
 TextField{
     -fx-background-radius: 0.7em;
     -fx-font-size: 1em;
-    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
+    -fx-effect: dropshadow(gaussian, #44444424, 10, 0.3, 0.0, 0.0);
     -fx-background-color: linear-gradient(to right, #3790ffaa, #70defaaa);
 }
 Button:hover, ChoiceBox:hover{
