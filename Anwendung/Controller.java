@@ -400,4 +400,6 @@ public class Controller implements Beobachter
             break;
         }
     } 
+    
+    @FXML public void jetztMessen(){sensorbox.jetztMessen();}
 }
