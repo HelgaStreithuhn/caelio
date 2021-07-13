@@ -38,4 +38,4 @@ Die Anwendung ist als JavaFX Application über die Klasse `Anwendung` im BlueJ-P
 
 Klassendiagramm:
 
-![Klassendiagramm](Dokumentation/klassendiagramm.png)
+![Klassendiagramm](klassendiagramm.png)
