@@ -1,14 +1,18 @@
 #BlueJ class context
 comment0.target=Controller
-comment0.text=\n\ Klasse\ zum\ Verwalten\ der\ Anwendung\n
+comment0.text=\r\n\ Klasse\ zum\ Verwalten\ der\ Anwendung\r\n
 comment1.params=
 comment1.target=void\ initialize()
 comment2.params=id
 comment2.target=void\ sensorboxLaden(java.lang.String)
 comment3.params=koordinateOst\ koordinateNord\ maxDist
-comment3.target=java.lang.String\ boxSuchen(float,\ float,\ int)
-comment4.params=
-comment4.target=void\ aktualisieren()
-comment5.params=wasAktualisieren
-comment5.target=void\ aktualisieren(java.lang.String)
-numComments=6
+comment3.target=java.lang.String\ boxSuchenJSON(double,\ double,\ int)
+comment4.params=koordinateOst\ koordinateNord\ maxDist
+comment4.target=void\ boxSuchen(double,\ double,\ int)
+comment5.params=
+comment5.target=void\ boxWaehlen()
+comment6.params=
+comment6.target=void\ aktualisieren()
+comment7.params=wasAktualisieren
+comment7.target=void\ aktualisieren(java.lang.String)
+numComments=8

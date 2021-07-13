@@ -1,27 +1,7 @@
+/* Schrift */
 *{
     -fx-font-family: "Noto Sans", "Helvetica", sans-serif;
     -fx-font-size: 1em;
-}
-
-/* Tab pane styling */
-TabPane{
-    -fx-tab-min-width: 50px;
-}
-
-TextField{
-    -fx-background-color: #abefde66;
-}
-
-.tab {
-    -fx-background-color: linear-gradient(to top, #abefdf, #beffef);
-}
-
-.hintergrundGradient, AnchorPane{
-    -fx-background-color: linear-gradient(to left top, #ded, #70defa);
-}
-.hintergrundWerte {
-    -fx-background-color: white;
-    -fx-border-color: black;
 }
 .header{
     -fx-font-size: 2em;
@@ -31,15 +11,70 @@ TextField{
 .subHeader{
     -fx-font-size: 1.5em;
 }
-.ampelLicht{
-    -fx-stroke: none;
+
+
+
+
+/* Hintergrund */
+
+.hintergrundWerte {
+    -fx-background-color: white;
+    -fx-border-color: black;
 }
-.aus{
-    -fx-fill: linear-gradient(to top, #666, #222);
-    -fx-stroke: none;
+
+.hintergrundGradient, AnchorPane{
+    -fx-background-color: linear-gradient(to left top, #ded, #70defa);
 }
-.ampelContainer{
-    -fx-spacing: 3px;
-    -fx-background-color: linear-gradient(to top , #555, #999);
-    -fx-background-radius: 5px;
+
+
+
+/* Menü */
+TabPane{
+    -fx-tab-min-width: 50px;
 }
+.tab {
+    -fx-background-color: linear-gradient(to top, #abefdf, #beffef);
+    -fx-border-color: #ffffff00;
+}
+
+
+
+
+
+/* Kontrollfelder */
+
+ChoiceBox{
+    -fx-background-color: linear-gradient(to bottom right, #3790ffaa, #70defaaa, #47a0ffaa);
+    -fx-font-size: 1em;
+    -fx-background-radius: 0.7em;
+    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
+}
+
+Button{
+    -fx-background-color: linear-gradient(to right, #3790ffaa, #70defaaa);
+    -fx-font-size: 1em;
+    -fx-background-radius: 0.7em;
+    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
+}
+
+TextField{
+    -fx-background-radius: 0.7em;
+    -fx-font-size: 1em;
+    -fx-effect: dropshadow(gaussian, #44444414, 10, 0.3, 0.0, 0.0);
+    -fx-background-color: linear-gradient(to right, #3790ffaa, #70defaaa);
+}
+Button:hover, ChoiceBox:hover{
+    -fx-effect: dropshadow(gaussian, #4444441c, 13, 0.2, 0.15, 0.15);   
+}
+
+
+menuLeiste{
+    -fx-background-color: #a33
+}
+
+
+
+
+
+
+

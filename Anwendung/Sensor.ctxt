@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Sensor
-comment0.text=\n\ Klasse\ zur\ Verwaltung\ eines\ Datensatzes\n
 comment1.params=einheit\ name\ _id\ parent
 comment1.target=Sensor(java.lang.String,\ java.lang.String,\ java.lang.String,\ Sensorbox)
 comment2.params=
