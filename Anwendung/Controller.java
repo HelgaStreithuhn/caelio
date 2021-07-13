@@ -160,6 +160,30 @@ public class Controller implements Beobachter
     @FXML private TableColumn<Messwert, String> tempMesszeit;
     private ObservableList<Messwert> tempWerte;
     
+    @FXML private TableView<Messwert> co2Tabelle;
+    @FXML private TableColumn<Messwert, String> co2Messwert;
+    @FXML private TableColumn<Messwert, String> co2Messzeit;
+    private ObservableList<Messwert> co2Werte;
+    
+    @FXML private TableView<Messwert> feuchtTabelle;
+    @FXML private TableColumn<Messwert, String> feuchtMesswert;
+    @FXML private TableColumn<Messwert, String> feuchtMesszeit;
+    private ObservableList<Messwert> feuchtWerte;
+    
+    @FXML private TableView<Messwert> beleuchtungTabelle;
+    @FXML private TableColumn<Messwert, String> beleuchtungMesswert;
+    @FXML private TableColumn<Messwert, String> beleuchtungMesszeit;
+    private ObservableList<Messwert> beleuchtungWerte;
+    
+    @FXML private TableView<Messwert> uvTabelle;
+    @FXML private TableColumn<Messwert, String> uvMesswert;
+    @FXML private TableColumn<Messwert, String> uvMesszeit;
+    private ObservableList<Messwert> uvWerte;
+    
+    @FXML private TableView<Messwert> staubTabelle;
+    @FXML private TableColumn<Messwert, String> staubMesswert;
+    @FXML private TableColumn<Messwert, String> staubMesszeit;
+    private ObservableList<Messwert> staubWerte;
     
 
     @FXML
@@ -192,7 +216,43 @@ public class Controller implements Beobachter
         tempMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         tempMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         tempTabelle.setItems(tempWerte);
+        
+        try{
+            co2Werte = sensorbox.datensatzFinden("CO₂").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        co2Messzeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        co2Messwert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        co2Tabelle.setItems(co2Werte);
+        
+        try{
+            feuchtWerte = sensorbox.datensatzFinden("rel. Luftfeuchte").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        feuchtMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        feuchtMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        feuchtTabelle.setItems(feuchtWerte);
+        
+        try{
+            beleuchtungWerte = sensorbox.datensatzFinden("Beleuchtungsstärke").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        beleuchtungMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        beleuchtungMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        beleuchtungTabelle.setItems(beleuchtungWerte);
+        
+        try{
+            uvWerte = sensorbox.datensatzFinden("UV-Intensität").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        uvMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        uvMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        uvTabelle.setItems(uvWerte);
+        
+        try{
+            staubWerte = sensorbox.datensatzFinden("PM10").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        staubMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        staubMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        staubTabelle.setItems(staubWerte);
     }
+    
     public void sensorboxLaden(String id)
     {
         sensorbox = new Sensorbox(id);
@@ -223,7 +283,7 @@ public class Controller implements Beobachter
         return ergebnis;
     }
 
-    public void boxSuchen(double koordinateOst, double koordinateNord, int maxDist){
+    public void boxSuchen(double koordinateNord, double koordinateOst, int maxDist){
         try{
             JSONArray auswaehlbareBoxen = new JSONArray(boxSuchenJSON(koordinateOst, koordinateNord, maxDist));
             for(Object einzelergebnis : auswaehlbareBoxen){

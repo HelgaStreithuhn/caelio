@@ -33,6 +33,14 @@ public class Sensorbox
         mig.sensorAnmelden(s);
     }
     
+    public void jetztMessen(){
+        try{
+            mig.jetztAlleMessenLassen();
+        } catch (Exception e) {
+            System.out.println(e + " (Sensorbox, jetztMessen)");
+        }
+    }
+    
     public void datenLaden() throws Exception
     {
         //Diese Methode initialisiert die Sensoren der Sensorbox.

@@ -19,8 +19,11 @@ public class Datensatz
     public void einfuegen(Messwert messwert)
     {
         //Todo: hier soll doppeltes Einfügen des selben Datensatzes verhindert werden
-        //if(neustenMesswerteGeben().zeitstempelGeben() != messwert.zeitstempelGeben())
+        if(neustenMesswerteGeben() == null)
         messwerte.add(messwert);
+        if(neustenMesswerteGeben().toString().equals(messwert.toString()) == false)
+        messwerte.add(messwert);
+        
     }
 
     public void ausgeben()
@@ -40,7 +43,12 @@ public class Datensatz
     
     public Messwert neustenMesswerteGeben()
     {
-        return messwerte.get(messwerte.size() - 1);
+        try{
+            return messwerte.get(messwerte.size() - 1);
+        } catch (Exception e) {
+            //wenn noch keine Messwerte existieren, soll null zurückgeliefert werden
+            return null;
+        }
     }
     
     public Messwert maxMesswerteGeben()
@@ -48,8 +56,9 @@ public class Datensatz
         Messwert max = messwerte.get(0);
         // wenn der untersuchte wert größer ist als der bisher größte, soll er als neuer größter gesetzt werden
         for(Messwert vergleichswert : messwerte){
-            System.out.println(vergleichswert);
-            if(vergleichswert.wertGeben() > max.wertGeben()) max = vergleichswert; 
+            if(vergleichswert.wertGeben() > max.wertGeben()){
+                max = vergleichswert;
+            }
         }
         return max;
     }

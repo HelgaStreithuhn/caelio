@@ -48,6 +48,7 @@ ChoiceBox{
     -fx-font-size: 1em;
     -fx-background-radius: 0.7em;
     -fx-effect: dropshadow(gaussian, #44444424, 10, 0.3, 0.0, 0.0);
+    -fx-text-fill: white;
 }
 
 Button{
@@ -55,6 +56,7 @@ Button{
     -fx-font-size: 1em;
     -fx-background-radius: 0.7em;
     -fx-effect: dropshadow(gaussian, #44444424, 10, 0.3, 0.0, 0.0);
+    -fx-text-fill: white;
 }
 
 TextField{
@@ -62,6 +64,7 @@ TextField{
     -fx-font-size: 1em;
     -fx-effect: dropshadow(gaussian, #44444424, 10, 0.3, 0.0, 0.0);
     -fx-background-color: linear-gradient(to right, #3790ffaa, #70defaaa);
+    -fx-text-fill: white;
 }
 Button:hover, ChoiceBox:hover{
     -fx-effect: dropshadow(gaussian, #4444441c, 13, 0.2, 0.15, 0.15);   
@@ -70,6 +73,45 @@ Button:hover, ChoiceBox:hover{
 
 menuLeiste{
     -fx-background-color: #a33
+}
+
+
+
+/* tabelle (hintergrund, leer) */
+.table-view, .table-view:focused{
+    -fx-background-color: linear-gradient(to right, #3790ffaa, #70defaaa);
+    -fx-effect: dropshadow(gaussian, #4444441c, 13, 0.2, 0.15, 0.15);
+}
+
+/* zeilen mit normalem inhalt der tabellen */
+.table-row-cell{
+    -fx-background-color: #ddeedd66;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:odd{
+    -fx-background-color: #70defa66;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:selected {
+    -fx-background-color: #3790ffaa;
+}
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+
+
+
+/* überschriften der tabelle */
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to top, #3790ffaa 0%, #70defaaa 100%);
+}
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
 }
 
 

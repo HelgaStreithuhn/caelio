@@ -8,11 +8,9 @@ public class Messintervallgeber extends Thread{
             Thread.sleep(intervall);
             for(Sensor sens : zurueckzurufen){
                 sens.messen();
-                //System.out.println("Messaufruf an " + sens.toString());
             }
         }catch(Exception e){
             System.out.println(e);
-            return;
         }
         run();
     }
@@ -24,5 +22,11 @@ public class Messintervallgeber extends Thread{
     
     public void sensorAnmelden(Sensor s){
         zurueckzurufen.add(s);
+    }
+    
+    public void jetztAlleMessenLassen() throws Exception{
+        for(Sensor sens : zurueckzurufen){
+                sens.messen();
+            }
     }
 }

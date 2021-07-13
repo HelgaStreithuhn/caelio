@@ -589,9 +589,9 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
                   <ChoiceBox fx:id="datenbankwahlliste" />
                   <Label text="Längengrad" />
-                  <TextField />
+                  <TextField fx:id="langgr"/>
                   <Label text="Breitengrad" />
-                  <TextField />
+                  <TextField fx:id="breitgr"/>
                   <HBox spacing="20.0">
                      <children>
                         <Button fx:id="standortAendern" mnemonicParsing="false" onAction="#boxWaehlen" text="Standort ändern" />

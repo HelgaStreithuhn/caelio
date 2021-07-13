@@ -13,18 +13,12 @@ public class Messwert
 {
     private double wert;
     private long zeitstempel;
-    
-    /*
-    public Messwert(double wert_)
-    {
-        wert = wert_;
-        zeitstempel = Instant.now().toEpochMilli();
-    }/**/
-    
-    public Messwert(double wert, long zeitmarke)
+    private final String einheit;
+    public Messwert(double wert, long zeitmarke, String einheit)
     {
         this.wert = wert;
         zeitstempel = zeitmarke;
+        this.einheit = einheit;
     }
     
     public String toString()
@@ -36,7 +30,7 @@ public class Messwert
     {
         return wert;
     }
-    public double getWert(){return wertGeben();}
+    public String getWert(){return String.valueOf(wertGeben()) + einheit;}
     
     public long zeitstempelGeben()
     {
@@ -52,12 +46,4 @@ public class Messwert
     public String wertAlsTextGeben(){
         return String.valueOf(wert);
     }
-    
-    /*public StringProperty getZeitProp(){
-    
-    }
-    
-    public StringProperty getWertProp(){
-    
-    }*/
 }

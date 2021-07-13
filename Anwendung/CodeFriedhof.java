@@ -1,6 +1,13 @@
 
 public class CodeFriedhof
 {
+    /*
+    public Messwert(double wert_)
+    {
+        wert = wert_;
+        zeitstempel = Instant.now().toEpochMilli();
+    }/**/
+    
     /*public Datensatz(ArrayList<Messwert> messwerte_, String einheit_)
     {
         messwerte = messwerte_;
