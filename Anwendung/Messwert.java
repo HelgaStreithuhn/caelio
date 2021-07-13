@@ -7,6 +7,7 @@
 
 
 import java.time.Instant;
+import java.util.Date;
 
 public class Messwert
 {
@@ -35,11 +36,13 @@ public class Messwert
     {
         return wert;
     }
+    public double getWert(){return wertGeben();}
     
     public long zeitstempelGeben()
     {
         return zeitstempel;
     }
+    public String getZeit(){return String.valueOf(new Date(zeitstempelGeben()));}
     
     public String ausgeben()
     {
@@ -50,4 +53,11 @@ public class Messwert
         return String.valueOf(wert);
     }
     
+    /*public StringProperty getZeitProp(){
+    
+    }
+    
+    public StringProperty getWertProp(){
+    
+    }*/
 }

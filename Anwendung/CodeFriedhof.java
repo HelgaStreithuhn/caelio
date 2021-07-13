@@ -1,6 +1,11 @@
 
 public class CodeFriedhof
 {
+    /*public Datensatz(ArrayList<Messwert> messwerte_, String einheit_)
+    {
+        messwerte = messwerte_;
+        einheit = einheit_;
+    }*/
     /*
     //aus der Klasse Internet-Verbinder:
     public static String httpPostAnfrage (String url, String args) throws Exception {

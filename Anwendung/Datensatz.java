@@ -1,19 +1,18 @@
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 public class Datensatz
 {
-    private ArrayList<Messwert> messwerte;
+    //private ArrayList<Messwert> messwerte;
     private String einheit;
-
-    public Datensatz(ArrayList<Messwert> messwerte_, String einheit_)
-    {
-        messwerte = messwerte_;
-        einheit = einheit_;
-    }
-
-    public Datensatz(String einheit_)
-    {
-        messwerte = new ArrayList<Messwert>();
+    private ObservableList<Messwert> messwerte;
+    
+    public Datensatz(String einheit_){
+        messwerte = FXCollections.observableArrayList();
         einheit = einheit_;
     }
     
@@ -32,10 +31,7 @@ public class Datensatz
             System.out.println(messwerte.get(i).toString());
     }
     
-    public ArrayList<Messwert> messwerteGeben()
-    {
-        return messwerte;
-    }
+    public ObservableList<Messwert> messwerteGeben(){return messwerte;}
     
     public String einheitGeben()
     {
@@ -52,6 +48,7 @@ public class Datensatz
         Messwert max = messwerte.get(0);
         // wenn der untersuchte wert größer ist als der bisher größte, soll er als neuer größter gesetzt werden
         for(Messwert vergleichswert : messwerte){
+            System.out.println(vergleichswert);
             if(vergleichswert.wertGeben() > max.wertGeben()) max = vergleichswert; 
         }
         return max;

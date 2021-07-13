@@ -74,10 +74,10 @@ public class Sensor
     }
 
     public void ausgeben(){
-        System.out.println("Sensordaten:");
-        ArrayList<Messwert> messwerte = datensatz.messwerteGeben();
+        System.out.println("Diese Methode ist veraltet und sollte nicht verwendet werden.");
+        /*ArrayList<Messwert> messwerte = datensatz.messwerteGeben();
         for (int i = 0; i < messwerte.size(); i ++){
             System.out.println(messwerte.get(i).ausgeben());
-        }
+        }*/
     }
 }

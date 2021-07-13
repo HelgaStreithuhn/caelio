@@ -11,7 +11,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -175,87 +174,177 @@
     </Tab>
       <Tab fx:id="tempTab" text="Temperatur">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <VBox spacing="50.0" styleClass="hintergrundGradient">
                <children>
-                  <VBox>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <GridPane>
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                        <TableView fx:id="tempTabelle" prefHeight="200.0" prefWidth="200.0">
-                           <columns>
-                              <TableColumn fx:id="tempMesszeit" prefWidth="75.0" text="Messzeit" />
-                              <TableColumn fx:id="tempMesswert" prefWidth="75.0" text="Messwert" />
-                           </columns>
-                        </TableView>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="aktueller Wert:" />
+                              <Label text="max. Wert:" />
+                              <Label text="min. Wert:" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <TextField fx:id="tempAktuell" editable="false" />
+                              <TextField fx:id="tempMin" editable="false" />
+                              <TextField fx:id="tempMax" editable="false" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <ImageView fitHeight="157.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icons/temperatur.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </ImageView>
                      </children>
-                  </VBox>
-                  <ImageView fitHeight="157.0" fitWidth="68.0" layoutX="25.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icons/temperatur.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="105.0" layoutY="65.0" text="aktueller Wert:" />
-                  <Label layoutX="105.0" layoutY="98.0" text="max. Wert:" />
-                  <Label layoutX="105.0" layoutY="133.0" text="min. Wert:" />
-                  <TextField fx:id="tempAktuell" editable="false" layoutX="210.0" layoutY="61.0" />
-                  <TextField fx:id="tempMin" editable="false" layoutX="210.0" layoutY="129.0" />
-                  <TextField fx:id="tempMax" editable="false" layoutX="210.0" layoutY="94.0" />
-               </children></AnchorPane>
+                  </GridPane>
+                  <TableView fx:id="tempTabelle">
+                     <columns>
+                        <TableColumn fx:id="tempMesszeit" prefWidth="75.0" text="Messzeit" />
+                        <TableColumn fx:id="tempMesswert" prefWidth="75.0" text="Messwert" />
+                     </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
+               </padding>
+            </VBox>
         </content>
       </Tab>
       <Tab fx:id="co2Tab" text="CO2">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <VBox spacing="50.0" styleClass="hintergrundGradient">
                <children>
-                  <ImageView fitHeight="87.0" fitWidth="191.0" layoutX="14.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icons/co2.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="226.0" layoutY="53.0" text="aktueller Wert:" />
-                  <Label layoutX="225.0" layoutY="88.0" text="max. Wert:" />
-                  <TextField fx:id="co2Aktuell" editable="false" layoutX="325.0" layoutY="49.0" />
-                  <TextField fx:id="co2Max" editable="false" layoutX="325.0" layoutY="84.0" />
-                  <TextField fx:id="co2Min" editable="false" layoutX="325.0" layoutY="119.0" />
-                  <Label layoutX="226.0" layoutY="123.0" text="min. Wert:" />
-                  <TableView fx:id="co2Tabelle" layoutX="28.0" layoutY="224.0" prefHeight="200.0" prefWidth="200.0">
+                  <GridPane hgap="10.0" vgap="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="aktueller Wert:" />
+                              <Label text="max. Wert:" />
+                              <Label text="min. Wert:" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <TextField fx:id="co2Aktuell" editable="false" />
+                              <TextField fx:id="co2Max" editable="false" />
+                              <TextField fx:id="co2Min" editable="false">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <ImageView fitHeight="87.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icons/co2.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="co2Tabelle">
                     <columns>
                       <TableColumn fx:id="co2Messzeit" prefWidth="75.0" text="Messzeit" />
                       <TableColumn fx:id="co2Messwert" prefWidth="75.0" text="Messwert" />
                     </columns>
                   </TableView>
-               </children></AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
+               </padding>
+            </VBox>
         </content>
       </Tab>
       <Tab fx:id="feuchtTab" text="Luftfeuchtigkeit">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <VBox spacing="50.0" styleClass="hintergrundGradient">
                <children>
-                  <ImageView fitHeight="128.0" fitWidth="135.0" layoutX="26.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Icons/luftfeuchtigkeit.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="150.0" layoutY="73.0" text="aktueller Wert:" />
-                  <Label layoutX="150.0" layoutY="111.0" text="max. Wert:" />
-                  <Label layoutX="151.0" layoutY="148.0" prefHeight="0.0" prefWidth="55.0" text="min. Wert:" />
-                  <TextField fx:id="feuchtMin" editable="false" layoutX="254.0" layoutY="144.0" />
-                  <TextField fx:id="feuchtMax" editable="false" layoutX="254.0" layoutY="107.0" />
-                  <TextField fx:id="feuchtAktuell" editable="false" layoutX="254.0" layoutY="69.0" />
-                  <TableView fx:id="LFeuchtigkeitTabelle" layoutX="38.0" layoutY="234.0" prefHeight="200.0" prefWidth="200.0">
+                  <GridPane hgap="10.0" vgap="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="128.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icons/luftfeuchtigkeit.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="aktueller Wert:" />
+                              <Label text="max. Wert:" />
+                              <Label prefHeight="0.0" prefWidth="55.0" text="min. Wert:" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <TextField fx:id="feuchtMin" editable="false" />
+                              <TextField fx:id="feuchtMax" editable="false" />
+                              <TextField fx:id="feuchtAktuell" editable="false" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="feuchtTabelle">
                      <columns>
-                        <TableColumn fx:id="LFeuchtigkeitMesszeit" prefWidth="75.0" text="Messzeit" />
-                        <TableColumn fx:id="LFeuchtigkeitMesswert" prefWidth="75.0" text="Messwert" />
+                        <TableColumn fx:id="feuchtMesszeit" prefWidth="75.0" text="Messzeit" />
+                        <TableColumn fx:id="feuchtMesswert" prefWidth="75.0" text="Messwert" />
                      </columns>
                   </TableView>
-               </children></AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
+               </padding>
+            </VBox>
         </content>
       </Tab>
       <Tab fx:id="druckTab" text="Luftdruck">
@@ -500,10 +589,15 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Datenbank" />
                   <ChoiceBox fx:id="datenbankwahlliste" />
                   <Label text="Längengrad" />
-                  <TextField fx:id="langgr" />
-                  <Label text="Breitengrad"/>
-                  <TextField fx:id="breitgr" />
-                  <Button fx:id="standortAendern" mnemonicParsing="false" text="Standort ändern" />
+                  <TextField />
+                  <Label text="Breitengrad" />
+                  <TextField />
+                  <HBox spacing="20.0">
+                     <children>
+                        <Button fx:id="standortAendern" mnemonicParsing="false" onAction="#boxWaehlen" text="Standort ändern" />
+                        <Button fx:id="standortSuchen" mnemonicParsing="false" onAction="#boxenSuchen" text="Standort suchen" />
+                     </children>
+                  </HBox>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subHeader" text="Beschreibung" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Die Anwendung stellt eine grafische Oberfläche zur Überwachung von Luft-Messwerten von SenseBoxen, welche auf der OpenSenseMap zu finden sind, bereit.Caelio ist ein Programm, welches Messdaten einer Wetterstation anschaulich ausgeben kann. Hierbei werden aktuell die Daten einer sogenannten SenseBox, die derzeit am Ignaz-Taschner-Gymnasium in Dachau ihren Standpunkt hat, verwendet. Folgende Daten können eingesehen werden: Temperatur, Luftfeuchtigkeit, Luftdruck, Beleuchtungsstärke, UV-Intensität und Feinstaub.Diese Daten werden bei Internetverbindung ungefähr minütlich aktualisiert.Verwendete Einheiten:Temperatur: C°Luftfeuchtigkeit: %Luftdruck: 1 hPa = 100 Pa (Pascal) = 100 Newton / Quadratmeter (Mittlerer Luftdruck der Erdatmosphäre auf Meereshöhe: 1013,25 hPa)Beleuchtungsstärke: lx (Lux) (Wert der Beleuchtungsstärke bei einem wolkenfreien Sommertag ca.: 100.000 lx)UV-Intensität: μW/cm² (Mikrowatt / Quadratzentimeter) (unbedenkliche UV-Intensität bei einem Wert von ca.: 5.62μW/cm²)Feinstaub: µg/m³ (PM10) (Mikrogramm / Kubikmeter; PM10 ≙ Partikel mit aerodynamischem Durchmesser von weniger als 10 Mikrometer) (unbedenklicher Wert: 0.5µg/m³(PM10))" textAlignment="JUSTIFY" wrappingWidth="547.7366943359375" />
                </children>

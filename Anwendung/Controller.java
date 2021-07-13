@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Circle;
 import javafx.collections.FXCollections;
 import javafx.collections.*;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import org.json.*;
 import javafx.scene.control.SingleSelectionModel;
@@ -26,15 +28,6 @@ public class Controller implements Beobachter
 
     @FXML
     private URL location;
-
-    @FXML
-    private Circle kreisrot;
-
-    @FXML
-    private Circle kreisgelb;
-
-    @FXML
-    private Circle kreisgrün;
 
     @FXML
     private TextField uebersichtStandort;
@@ -151,11 +144,24 @@ public class Controller implements Beobachter
     private TextField langgr;
     @FXML
     private TextField breitgr;
-    
+
     @FXML
     private ChoiceBox<String> datenbankwahlliste;
     private ObservableList<String> boxenauswahl; //Soll die aktuell im Auswahlbereich liegenden Boxen speichern, bis der Nutzer eine auswählt
     
+    
+    @FXML private TableView<Messwert> druckTabelle;
+    @FXML private TableColumn<Messwert, String> druckMesswert;
+    @FXML private TableColumn<Messwert, String> druckMesszeit;
+    private ObservableList<Messwert> druckWerte;
+    
+    @FXML private TableView<Messwert> tempTabelle;
+    @FXML private TableColumn<Messwert, String> tempMesswert;
+    @FXML private TableColumn<Messwert, String> tempMesszeit;
+    private ObservableList<Messwert> tempWerte;
+    
+    
+
     @FXML
     void initialize()
     {
@@ -167,8 +173,26 @@ public class Controller implements Beobachter
         } catch (Exception e) { System.out.println("öhm: " + e);}
         // Laden der Sensorbox
         sensorboxLaden("607db857542eeb001cba21f0");
+        
+        tabellenEinbinden();
     }  
+
     
+   public void tabellenEinbinden(){
+        try{
+            druckWerte = sensorbox.datensatzFinden("Luftdruck").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        druckMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        druckMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        druckTabelle.setItems(druckWerte);
+        
+        try{
+            tempWerte = sensorbox.datensatzFinden("Temperatur").messwerteGeben();
+        } catch (Exception e) {System.out.println(e);}
+        tempMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        tempMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        tempTabelle.setItems(tempWerte);
+    }
     public void sensorboxLaden(String id)
     {
         sensorbox = new Sensorbox(id);
@@ -210,25 +234,26 @@ public class Controller implements Beobachter
             System.out.println(e + "(Klasse Controller, Methode boxSuchen)");
         }
     }
-    
+
     @FXML
     public void boxWaehlen(){
         String name = datenbankwahlliste.getValue();
         if (name == null || name.equals(sensorbox.getShowName()) ) return;
-        
+
         // id steht in klammern am ende des namens, wird wieder extrahiert, um damit eine neue SenseBox zu verbinden:
         String id = name.substring(name.lastIndexOf('(') + 1, name.length() - 1 );
         sensorbox = null;
         sensorboxLaden(id);
+        tabellenEinbinden();
     }
 
     @FXML public void boxenSuchen(){
         try{
             boxSuchen(Integer.valueOf(breitgr.getText()),Integer.valueOf(langgr.getText()),100000);
         } catch (Exception e) { System.out.println("Ähm: " + e);}
-        
+
     }
-    
+
     public void aktualisieren(){
         aktualisieren("Temperatur");
         aktualisieren("rel. Luftfeuchte");
