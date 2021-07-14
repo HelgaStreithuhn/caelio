@@ -187,14 +187,15 @@ public class Controller implements Beobachter
     
 
     @FXML
-    void initialize()
-    {
+    void initialize(){
         assert datenbankwahlliste != null : "datenbankwahlliste fehlt!";
         boxenauswahl = FXCollections.observableArrayList();
         try{
             datenbankwahlliste.setItems(boxenauswahl);
             boxSuchen(11,48,100000);
-        } catch (Exception e) { System.out.println("öhm: " + e);}
+        } catch (Exception e) { 
+            // System.out.println("Konnte Boxenauswahlliste nicht vorbereiten: " + e);
+        }
         // Laden der Sensorbox
         sensorboxLaden("607db857542eeb001cba21f0");
     }  
@@ -203,49 +204,63 @@ public class Controller implements Beobachter
    public void tabellenEinbinden(){
         try{
             druckWerte = sensorbox.datensatzFinden("Luftdruck").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         druckMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         druckMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         druckTabelle.setItems(druckWerte);
         
         try{
             tempWerte = sensorbox.datensatzFinden("Temperatur").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         tempMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         tempMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         tempTabelle.setItems(tempWerte);
         
         try{
             co2Werte = sensorbox.datensatzFinden("CO₂").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         co2Messzeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         co2Messwert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         co2Tabelle.setItems(co2Werte);
         
         try{
             feuchtWerte = sensorbox.datensatzFinden("rel. Luftfeuchte").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         feuchtMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         feuchtMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         feuchtTabelle.setItems(feuchtWerte);
         
         try{
             beleuchtungWerte = sensorbox.datensatzFinden("Beleuchtungsstärke").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         beleuchtungMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         beleuchtungMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         beleuchtungTabelle.setItems(beleuchtungWerte);
         
         try{
             uvWerte = sensorbox.datensatzFinden("UV-Intensität").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         uvMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         uvMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         uvTabelle.setItems(uvWerte);
         
         try{
             staubWerte = sensorbox.datensatzFinden("PM10").messwerteGeben();
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
         staubMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         staubMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         staubTabelle.setItems(staubWerte);
@@ -261,12 +276,11 @@ public class Controller implements Beobachter
             sensorbox.datenLaden();
 
             // Oberfläche wird mit Daten der Sensorbox gefüllt
-            aktualisieren();
             tabellenEinbinden();
         }
         catch (Exception e)
         {
-            System.out.println(e + "(Fehler beim Initialisieren der Sensorbox)");
+            // System.out.println(e + "(Fehler beim Initialisieren der Sensorbox)");
         }
     }
 
@@ -274,7 +288,7 @@ public class Controller implements Beobachter
         if(maxDist >= 100000000) throw new Exception("Unable to find sensboxes in a wide radius");
         String adresse = "https://api.opensensemap.org/boxes?minimal=true&bbox=180,90,-180,-90" + //bbox enthält ganze Welt
             "&near=" + String.valueOf(koordinateOst) + "," + String.valueOf(koordinateNord) + "&maxDistance=" + String.valueOf(maxDist);
-        System.out.println(adresse);
+
         String ergebnis = InternetVerbinder.httpGetAnfrage(adresse);
         if(ergebnis.equals("[]")){
             return boxSuchenJSON(koordinateOst, koordinateNord, maxDist*2);
@@ -285,14 +299,13 @@ public class Controller implements Beobachter
     public void boxSuchen(double koordinateNord, double koordinateOst, int maxDist){
         try{
             String json = boxSuchenJSON(koordinateOst, koordinateNord, maxDist);
-            System.out.println(json);
             JSONArray auswaehlbareBoxen = new JSONArray(json);
             for(Object einzelergebnis : auswaehlbareBoxen){
                 String boxNameAufOberflaeche = ((JSONObject) einzelergebnis).getString("name") + " (" + ((JSONObject) einzelergebnis).getString("_id") + ")";
                 boxenauswahl.add(boxNameAufOberflaeche);
             }
         } catch (Exception e) {
-            System.out.println(e + "(Klasse Controller, Methode boxSuchen)");
+            // System.out.println(e + "(Klasse Controller, Methode boxSuchen)");
         }
     }
 
@@ -310,7 +323,9 @@ public class Controller implements Beobachter
     @FXML public void boxenSuchen(){
         try{
             boxSuchen(Double.valueOf(breitgr.getText()),Double.valueOf(langgr.getText()),100000);
-        } catch (Exception e) { System.out.println("Ähm: " + e);}
+        } catch (Exception e) {
+            // System.out.println("Boxensuche fehlgeschlagen: " + e);
+        }
 
     }
 
@@ -323,7 +338,6 @@ public class Controller implements Beobachter
         aktualisieren("Luftdruck");
         aktualisieren("UV-Intensität");
     }
-
     public void aktualisieren(String wasAktualisieren){
         // wenn neue/andere Daten in der Sensorbox vorliegen, sollen diese auch in der Oberfläche erscheinen.
         //Diese Methode aktualisiert die Oberfläche in diesem Fall.

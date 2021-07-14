@@ -10,6 +10,4 @@ comment4.params=
 comment4.target=java.lang.String\ nameGeben()
 comment5.params=
 comment5.target=Datensatz\ datensatzGeben()
-comment6.params=
-comment6.target=void\ ausgeben()
-numComments=7
+numComments=6

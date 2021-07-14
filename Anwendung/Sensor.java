@@ -39,7 +39,7 @@ public class Sensor
     
     public void messen() throws Exception{
         String rohdaten = InternetVerbinder.httpGetAnfrage("https://api.opensensemap.org/boxes/" + parent.get().getKennung() + "/sensors/" + id + "?format=json");
-        //System.out.println(rohdaten);
+        
         JSONObject messwert = new JSONObject(rohdaten).getJSONObject("lastMeasurement");
         messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
     }
@@ -58,8 +58,7 @@ public class Sensor
             long unixzeit = sourceFormat.parse(timestamp).getTime();
             datensatz.einfuegen(new Messwert(value, unixzeit, datensatz.einheitGeben()));
         } catch (Exception e) {
-            //datensatz.einfuegen(new Messwert(value));
-            System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, während Versuch den String " + timestamp + " als Datum zu verwenden)");
+            // System.out.println(e + " (Klasse Sensor, Methode messwertHinzufuegen, während Versuch den String " + timestamp + " als Datum zu verwenden)");
         } finally {
             parent.get().sensorHatGemessen(localTime, this.name);
         }
@@ -71,13 +70,5 @@ public class Sensor
     
     public Datensatz datensatzGeben(){
         return datensatz;
-    }
-
-    public void ausgeben(){
-        System.out.println("Diese Methode ist veraltet und sollte nicht verwendet werden.");
-        /*ArrayList<Messwert> messwerte = datensatz.messwerteGeben();
-        for (int i = 0; i < messwerte.size(); i ++){
-            System.out.println(messwerte.get(i).ausgeben());
-        }*/
     }
 }

@@ -37,7 +37,7 @@ public class Sensorbox
         try{
             mig.jetztAlleMessenLassen();
         } catch (Exception e) {
-            System.out.println(e + " (Sensorbox, jetztMessen)");
+            // System.out.println(e + " (Sensorbox, jetztMessen)");
         }
     }
     
@@ -65,10 +65,11 @@ public class Sensorbox
             JSONObject sensorJSON = (JSONObject) sensor;
 
             Sensor neuerSensor = new Sensor(sensorJSON.getString("unit"),sensorJSON.getString("title"),sensorJSON.getString("_id"), this);
+            sensoren.add(neuerSensor);
+            
             JSONObject messwert = sensorJSON.getJSONObject("lastMeasurement");
             neuerSensor.messwertHinzufuegen(messwert.getString("createdAt"),messwert.getDouble("value"));
 
-            sensoren.add(neuerSensor);
         }
     }
     
@@ -83,7 +84,7 @@ public class Sensorbox
             return String.valueOf(datensatzFinden(name).neustenMesswerteGeben().wertGeben()) + String.valueOf(datensatzFinden(name).einheitGeben());
         }
         catch (Exception e){
-            System.out.println(e + " (Klasse Sensorbox, Methode neusteDatenGeben)");
+            // System.out.println(e + " (Klasse Sensorbox, Methode neusteDatenGeben)");
         }
         return "N/A";
     }
@@ -97,7 +98,7 @@ public class Sensorbox
             }
         }
         catch (Exception e){
-            System.out.println(e + " (Klasse Sensorbox, Methode extremDatenGeben)");
+            // System.out.println(e + " (Klasse Sensorbox, Methode extremDatenGeben)");
         }
         return "N/A";
     }

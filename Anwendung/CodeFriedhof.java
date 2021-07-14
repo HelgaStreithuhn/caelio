@@ -2,6 +2,10 @@
 public class CodeFriedhof
 {
     /*
+    
+    
+   
+    
     public Messwert(double wert_)
     {
         wert = wert_;
