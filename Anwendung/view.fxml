@@ -568,8 +568,8 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
                            <children>
                               <TextField fx:id="staubAktuell" editable="false" promptText="aktuell staub..." />
-                              <TextField fx:id="staubMin" editable="false" promptText="minimal Staub..." />
                               <TextField fx:id="staubMax" editable="false" promptText="maximal Staub..." />
+                              <TextField fx:id="staubMin" editable="false" promptText="minimal Staub..." />
                            </children>
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
