@@ -599,7 +599,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <TableView fx:id="staubTabelle1" HBox.hgrow="SOMETIMES">
+                        <TableView fx:id="staubTabelle1" prefWidth="400.0" HBox.hgrow="SOMETIMES">
                            <columns>
                               <TableColumn fx:id="staubMesszeit1" prefWidth="75.0" text="Messzeit" />
                               <TableColumn fx:id="staubMesswert1" prefWidth="75.0" text="Messwert (PM2,5)" />
