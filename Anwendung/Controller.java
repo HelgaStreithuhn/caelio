@@ -185,6 +185,11 @@ public class Controller implements Beobachter
     @FXML private TableColumn<Messwert, String> staubMesszeit;
     private ObservableList<Messwert> staubWerte;
     
+    @FXML private TableView<Messwert> staubTabelle1;
+    @FXML private TableColumn<Messwert, String> staubMesswert1;
+    @FXML private TableColumn<Messwert, String> staubMesszeit1;
+    private ObservableList<Messwert> staubWerte1;
+    
 
     @FXML
     void initialize(){
@@ -264,6 +269,16 @@ public class Controller implements Beobachter
         staubMesszeit.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
         staubMesswert.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
         staubTabelle.setItems(staubWerte);
+        
+        
+        try{
+            staubWerte1 = sensorbox.datensatzFinden("PM2.5").messwerteGeben();
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
+        staubMesszeit1.setCellValueFactory(new PropertyValueFactory<Messwert, String>("zeit"));
+        staubMesswert1.setCellValueFactory(new PropertyValueFactory<Messwert, String>("wert"));
+        staubTabelle1.setItems(staubWerte1);
     }
     
     public void sensorboxLaden(String id)

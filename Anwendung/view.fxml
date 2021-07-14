@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
   <tabs>
     <Tab text="Übersicht">
       <content>
@@ -588,15 +588,28 @@
                         <Insets />
                      </VBox.margin>
                   </GridPane>
-                  <TableView fx:id="staubTabelle">
-                     <columns>
-                        <TableColumn fx:id="staubMesszeit" prefWidth="75.0" text="Messzeit" />
-                        <TableColumn fx:id="staubMesswert" prefWidth="75.0" text="Messwert" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="SOMETIMES">
+                     <children>
+                        <TableView fx:id="staubTabelle" prefWidth="400.0">
+                           <columns>
+                              <TableColumn fx:id="staubMesszeit" prefWidth="75.0" text="Messzeit" />
+                              <TableColumn fx:id="staubMesswert" prefWidth="75.0" text="Messwert (PM 10)" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <TableView fx:id="staubTabelle1" HBox.hgrow="SOMETIMES">
+                           <columns>
+                              <TableColumn fx:id="staubMesszeit1" prefWidth="75.0" text="Messzeit" />
+                              <TableColumn fx:id="staubMesswert1" prefWidth="75.0" text="Messwert (PM2,5)" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
