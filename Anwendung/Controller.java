@@ -197,8 +197,6 @@ public class Controller implements Beobachter
         } catch (Exception e) { System.out.println("öhm: " + e);}
         // Laden der Sensorbox
         sensorboxLaden("607db857542eeb001cba21f0");
-        
-        tabellenEinbinden();
     }  
 
     
@@ -264,6 +262,7 @@ public class Controller implements Beobachter
 
             // Oberfläche wird mit Daten der Sensorbox gefüllt
             aktualisieren();
+            tabellenEinbinden();
         }
         catch (Exception e)
         {
@@ -285,7 +284,9 @@ public class Controller implements Beobachter
 
     public void boxSuchen(double koordinateNord, double koordinateOst, int maxDist){
         try{
-            JSONArray auswaehlbareBoxen = new JSONArray(boxSuchenJSON(koordinateOst, koordinateNord, maxDist));
+            String json = boxSuchenJSON(koordinateOst, koordinateNord, maxDist);
+            System.out.println(json);
+            JSONArray auswaehlbareBoxen = new JSONArray(json);
             for(Object einzelergebnis : auswaehlbareBoxen){
                 String boxNameAufOberflaeche = ((JSONObject) einzelergebnis).getString("name") + " (" + ((JSONObject) einzelergebnis).getString("_id") + ")";
                 boxenauswahl.add(boxNameAufOberflaeche);
@@ -304,12 +305,11 @@ public class Controller implements Beobachter
         String id = name.substring(name.lastIndexOf('(') + 1, name.length() - 1 );
         sensorbox = null;
         sensorboxLaden(id);
-        tabellenEinbinden();
     }
 
     @FXML public void boxenSuchen(){
         try{
-            boxSuchen(Integer.valueOf(breitgr.getText()),Integer.valueOf(langgr.getText()),100000);
+            boxSuchen(Double.valueOf(breitgr.getText()),Double.valueOf(langgr.getText()),100000);
         } catch (Exception e) { System.out.println("Ähm: " + e);}
 
     }
